@@ -1,0 +1,396 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import './Pricing.css';
+
+const Pricing = () => {
+  const pricingPlans = [
+    {
+      type: 'One-on-One Lessons',
+      icon: '👤',
+      basePrice: '£25',
+      unit: 'per hour',
+      description: 'Personalized instruction tailored to your specific needs',
+      features: [
+        'Customized lesson plans',
+        'Flexible scheduling',
+        'Individual attention',
+        'Progress tracking',
+        'All materials included'
+      ],
+      packages: [
+        { lessons: 1, price: '£25.00', savings: null },
+        { lessons: 5, price: '£118.75', savings: '5% discount' },
+        { lessons: 10, price: '£225.00', savings: '10% discount' }
+      ],
+      popular: false
+    },
+    {
+      type: 'Group Classes',
+      icon: '👥',
+      basePrice: '£10',
+      unit: 'per student per hour',
+      description: 'Learn with other students in small groups (3-8 students)',
+      features: [
+        'Interactive group learning',
+        'Cultural exchange opportunities',
+        'Peer conversation practice',
+        'Cost-effective learning',
+        'Collaborative activities'
+      ],
+      packages: [
+        { lessons: '1 Month Course', price: 'from £40', savings: 'Small discount' },
+        { lessons: '3 Month Course', price: 'from £110', savings: 'Better discount' },
+        { lessons: '9 Month Course', price: 'from £300', savings: 'Best discount' }
+      ],
+      popular: true
+    }
+  ];
+
+  const courseDurations = [
+    {
+      duration: '1 Month',
+      description: 'Quick projects or intensive exam preparation',
+      individualPrice: 'Small discount on hourly rate',
+      groupPrice: 'Discounted group rates',
+      features: ['Focused objectives', 'Quick results', 'Intensive format']
+    },
+    {
+      duration: '3 Months',
+      description: 'Semi-intensive courses for steady progress',
+      individualPrice: 'Better discount on hourly rate',
+      groupPrice: 'Better group discounts',
+      features: ['Comprehensive development', 'Structured progression', 'Regular assessments']
+    },
+    {
+      duration: '9 Months',
+      description: 'Full academic year with maximum support',
+      individualPrice: 'Best discount rates',
+      groupPrice: 'Maximum group savings',
+      features: ['Guaranteed timetable', 'Long-term tracking', 'Complete language journey']
+    }
+  ];
+
+  const additionalServices = [
+    {
+      service: 'Free Consultation',
+      price: '£0',
+      description: '20-minute assessment and goal-setting session',
+      icon: '🎯'
+    },
+    {
+      service: 'Needs Assessment',
+      price: 'Included',
+      description: 'Questionnaire to understand your learning needs',
+      icon: '📋'
+    },
+    {
+      service: 'Level Test',
+      price: 'Free',
+      description: 'Grammar and vocabulary assessment via Google Form',
+      icon: '📝'
+    },
+    {
+      service: 'Student Portal Access',
+      price: 'Included',
+      description: 'Private area for course materials and resources',
+      icon: '🔒'
+    }
+  ];
+
+  return (
+    <div className="pricing">
+      {/* Hero Section */}
+      <section className="pricing-hero">
+        <div className="container">
+          <motion.div 
+            className="pricing-hero-content"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1>Simple, Transparent Pricing</h1>
+            <p className="pricing-subtitle">
+              Quality English instruction at fair, competitive rates with no hidden fees
+            </p>
+            <p className="pricing-description">
+              Whether you prefer one-on-one attention or group learning, I offer flexible 
+              pricing options to suit your budget and learning goals.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Free Consultation CTA */}
+      <section className="free-consultation">
+        <div className="container">
+          <motion.div 
+            className="consultation-banner"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="consultation-content">
+              <h3>🎯 Start with a FREE 20-Minute Consultation</h3>
+              <p>Assess your level, discuss your goals, and find the perfect learning plan</p>
+              <Link to="/contact" className="btn btn-primary">Book Your Free Session</Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Pricing Plans */}
+      <section className="pricing-plans section">
+        <div className="container">
+          <div className="section-title">
+            <h2>Choose Your Learning Format</h2>
+            <p>Select the option that best fits your learning style and budget</p>
+          </div>
+          <div className="plans-grid">
+            {pricingPlans.map((plan, index) => (
+              <motion.div 
+                key={index}
+                className={`pricing-card ${plan.popular ? 'popular' : ''}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                {plan.popular && <div className="popular-badge">Most Popular</div>}
+                <div className="card-header">
+                  <div className="plan-icon">{plan.icon}</div>
+                  <h3>{plan.type}</h3>
+                  <div className="price-display">
+                    <span className="price">{plan.basePrice}</span>
+                    <span className="unit">{plan.unit}</span>
+                  </div>
+                  <p className="plan-description">{plan.description}</p>
+                </div>
+                <div className="card-body">
+                  <div className="features-section">
+                    <h4>What's Included:</h4>
+                    <ul className="features-list">
+                      {plan.features.map((feature, idx) => (
+                        <li key={idx}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="packages-section">
+                    <h4>Package Options:</h4>
+                    <div className="packages-list">
+                      {plan.packages.map((pkg, idx) => (
+                        <div key={idx} className="package-item">
+                          <div className="package-info">
+                            <span className="package-lessons">{pkg.lessons}</span>
+                            <span className="package-price">{pkg.price}</span>
+                          </div>
+                          {pkg.savings && (
+                            <span className="package-savings">{pkg.savings}</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="card-footer">
+                  <Link to="/contact" className="btn btn-primary">
+                    Get Started
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Course Duration Pricing */}
+      <section className="duration-pricing section bg-light">
+        <div className="container">
+          <motion.div 
+            className="section-title"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>Course Duration & Discounts</h2>
+            <p>Save more with longer commitments and secure your spot in my schedule</p>
+          </motion.div>
+          <div className="duration-grid">
+            {courseDurations.map((course, index) => (
+              <motion.div 
+                key={index}
+                className="duration-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <div className="duration-header">
+                  <h3>{course.duration}</h3>
+                  <p>{course.description}</p>
+                </div>
+                <div className="duration-pricing">
+                  <div className="pricing-row">
+                    <span className="pricing-label">One-on-One:</span>
+                    <span className="pricing-value">{course.individualPrice}</span>
+                  </div>
+                  <div className="pricing-row">
+                    <span className="pricing-label">Group Classes:</span>
+                    <span className="pricing-value">{course.groupPrice}</span>
+                  </div>
+                </div>
+                <div className="duration-features">
+                  <ul>
+                    {course.features.map((feature, idx) => (
+                      <li key={idx}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Services */}
+      <section className="additional-services section">
+        <div className="container">
+          <motion.div 
+            className="section-title"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>What's Included at No Extra Cost</h2>
+            <p>These valuable services are included with all my courses</p>
+          </motion.div>
+          <div className="services-grid">
+            {additionalServices.map((service, index) => (
+              <motion.div 
+                key={index}
+                className="service-item"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <div className="service-icon">{service.icon}</div>
+                <h4>{service.service}</h4>
+                <div className="service-price">{service.price}</div>
+                <p>{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Payment Information */}
+      <section className="payment-info section bg-light">
+        <div className="container">
+          <div className="payment-content">
+            <motion.div 
+              className="payment-text"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2>Payment Information</h2>
+              <div className="payment-details">
+                <div className="payment-item">
+                  <h4>💳 Payment Methods</h4>
+                  <p>PayPal and Stripe for secure, international transactions with the best exchange rates</p>
+                </div>
+                <div className="payment-item">
+                  <h4>📅 Payment Policy</h4>
+                  <p>Payment in advance secures your slot in my timetable and guarantees your preferred times</p>
+                </div>
+                <div className="payment-item">
+                  <h4>🔄 Cancellation Policy</h4>
+                  <p>Cancel or reschedule lessons with at least 24 hours notice at no charge</p>
+                </div>
+                <div className="payment-item">
+                  <h4>🛡️ Secure & Safe</h4>
+                  <p>All payments processed through secure, encrypted payment platforms</p>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="payment-highlight"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="highlight-card">
+                <h3>Why Pay in Advance?</h3>
+                <div className="highlight-benefits">
+                  <div className="benefit">
+                    <span className="benefit-icon">🔒</span>
+                    <div>
+                      <h5>Secure Your Spot</h5>
+                      <p>Guarantee your preferred lesson times</p>
+                    </div>
+                  </div>
+                  <div className="benefit">
+                    <span className="benefit-icon">💰</span>
+                    <div>
+                      <h5>Better Rates</h5>
+                      <p>Access package discounts and savings</p>
+                    </div>
+                  </div>
+                  <div className="benefit">
+                    <span className="benefit-icon">📈</span>
+                    <div>
+                      <h5>Consistent Progress</h5>
+                      <p>Maintain regular learning schedule</p>
+                    </div>
+                  </div>
+                  <div className="benefit">
+                    <span className="benefit-icon">🎯</span>
+                    <div>
+                      <h5>Goal Achievement</h5>
+                      <p>Stay committed to your learning journey</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="pricing-cta section">
+        <div className="container">
+          <motion.div 
+            className="cta-content"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2>Ready to Start Learning English?</h2>
+            <p>
+              Choose the option that works best for you, or start with a free consultation 
+              to discuss your goals and find the perfect learning plan.
+            </p>
+            <div className="cta-buttons">
+              <Link to="/contact" className="btn btn-primary">
+                Book Free Consultation
+              </Link>
+              <Link to="/services" className="btn btn-secondary">
+                Explore Services
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Pricing;

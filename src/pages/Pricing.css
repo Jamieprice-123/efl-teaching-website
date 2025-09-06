@@ -1,0 +1,694 @@
+/* Pricing Hero */
+.pricing-hero {
+    background: linear-gradient(135deg, rgba(129, 212, 227, 0.1), rgba(253, 180, 98, 0.1));
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.pricing-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.pricing-subtitle {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.pricing-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Free Consultation */
+.free-consultation {
+    padding: 0;
+    margin-bottom: 4rem;
+}
+
+.consultation-banner {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.consultation-content h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.consultation-content p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.consultation-banner .btn-primary {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid white;
+}
+
+.consultation-banner .btn-primary:hover {
+    background: transparent;
+    color: white;
+}
+
+/* Pricing Plans */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+    border: 3px solid transparent;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.pricing-card.popular {
+    border-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.pricing-card.popular:hover {
+    transform: scale(1.05) translateY(-8px);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 2rem;
+    border-radius: 0 0 20px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+.card-header {
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(129, 212, 227, 0.05), rgba(253, 180, 98, 0.05));
+}
+
+.plan-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.price-display {
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.unit {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+.plan-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.features-section,
+.packages-section {
+    margin-bottom: 2rem;
+}
+
+.features-section h4,
+.packages-section h4 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features-list li {
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.features-list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.packages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.package-item {
+    background: #F8F9FA;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.package-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.package-lessons {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.package-price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.package-savings {
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.card-footer {
+    padding: 1.5rem 2rem 2rem;
+    text-align: center;
+}
+
+/* Duration Pricing */
+.duration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.duration-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.duration-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.duration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.duration-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.duration-header h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.duration-header p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.duration-pricing {
+    margin-bottom: 1.5rem;
+}
+
+.pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.pricing-row:last-child {
+    border-bottom: none;
+}
+
+.pricing-label {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.pricing-value {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.duration-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.duration-features li {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.duration-features li::before {
+    content: '⭐';
+    position: absolute;
+    left: 0;
+}
+
+/* Additional Services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-item {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-item h4 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.service-price {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.service-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Payment Information */
+.payment-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.payment-item h4 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.payment-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.payment-highlight {
+    position: sticky;
+    top: 2rem;
+}
+
+.highlight-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.highlight-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.highlight-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.benefit-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.benefit h5 {
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.benefit p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Pricing CTA */
+.pricing-cta {
+    background: var(--text-dark);
+    color: white;
+    text-align: center;
+}
+
+.pricing-cta h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-cta p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pricing-cta .btn-primary {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.pricing-cta .btn-primary:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.pricing-cta .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.pricing-cta .btn-secondary:hover {
+    background: white;
+    color: var(--text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card.popular {
+        transform: scale(1);
+    }
+
+    .pricing-card.popular:hover {
+        transform: translateY(-8px);
+    }
+
+    .payment-content {
+        gap: 3rem;
+    }
+
+    .payment-highlight {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-hero {
+        padding: 100px 0 60px;
+    }
+
+    .pricing-hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .pricing-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .pricing-description {
+        font-size: 1rem;
+    }
+
+    .consultation-banner {
+        padding: 1.5rem;
+    }
+
+    .consultation-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .consultation-content p {
+        font-size: 1rem;
+    }
+
+    .plans-grid {
+        gap: 1.5rem;
+    }
+
+    .pricing-card {
+        margin: 0;
+    }
+
+    .card-header {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-footer {
+        padding: 1rem 1.5rem 1.5rem;
+    }
+
+    .duration-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .duration-card {
+        padding: 1.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .service-item {
+        padding: 1.5rem;
+    }
+
+    .payment-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .highlight-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-hero {
+        padding: 80px 0 40px;
+    }
+
+    .pricing-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .pricing-subtitle {
+        font-size: 1rem;
+    }
+
+    .consultation-banner {
+        padding: 1.25rem;
+    }
+
+    .consultation-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .plans-grid {
+        gap: 1rem;
+    }
+
+    .card-header {
+        padding: 1.5rem 1.25rem 1.25rem;
+    }
+
+    .card-body {
+        padding: 1.25rem;
+    }
+
+    .card-footer {
+        padding: 0.75rem 1.25rem 1.25rem;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .duration-card {
+        padding: 1.25rem;
+    }
+
+    .duration-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .service-item {
+        padding: 1.25rem;
+    }
+
+    .service-icon {
+        font-size: 2rem;
+    }
+
+    .highlight-card {
+        padding: 1.5rem;
+    }
+
+    .benefit {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .pricing-cta h2 {
+        font-size: 2rem;
+    }
+
+    .pricing-cta p {
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
