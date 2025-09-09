@@ -125,7 +125,7 @@
 /* Course Durations */
 .durations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
 }
 
@@ -134,7 +134,6 @@
   border-radius: var(--border-radius);
   padding: 2.5rem;
   box-shadow: var(--shadow);
-  text-align: center;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -155,6 +154,11 @@
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
+.duration-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 .duration-header h3 {
   font-size: 2rem;
   color: var(--primary-color);
@@ -163,7 +167,7 @@
 
 .duration-header h4 {
   color: var(--text-dark);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
 }
 
@@ -171,6 +175,44 @@
   color: var(--text-light);
   line-height: 1.6;
   margin-bottom: 2rem;
+  text-align: center;
+}
+
+.duration-pricing {
+  background: #F8F9FA;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+.pricing-section {
+  margin-bottom: 1.5rem;
+}
+
+.pricing-section:last-child {
+  margin-bottom: 0;
+}
+
+.pricing-section h5 {
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.pricing-section p {
+  margin-bottom: 0.25rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.pricing-section strong {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.hours-info {
+  font-style: italic;
+  font-size: 0.85rem !important;
 }
 
 .duration-benefits h5 {
@@ -183,7 +225,6 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: left;
 }
 
 .duration-benefits li {
@@ -414,11 +455,11 @@
   .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
-  
+
   .materials-content {
     gap: 3rem;
   }
-  
+
   .teaching-approach {
     position: static;
   }
@@ -428,59 +469,59 @@
   .services-hero {
     padding: 100px 0 60px;
   }
-  
+
   .services-hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .services-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .services-description {
     font-size: 1rem;
   }
-  
+
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .service-card {
     padding: 2rem;
   }
-  
+
   .durations-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .duration-card {
     padding: 2rem;
   }
-  
+
   .consultation-features {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
   }
-  
+
   .consultation-feature {
     padding: 1.5rem;
   }
-  
+
   .materials-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .approach-card {
     padding: 2rem;
   }
-  
+
   .consultation-content h2 {
     font-size: 2rem;
   }
-  
+
   .consultation-content p {
     font-size: 1rem;
   }
@@ -490,57 +531,57 @@
   .services-hero {
     padding: 80px 0 40px;
   }
-  
+
   .services-hero-content h1 {
     font-size: 2rem;
   }
-  
+
   .services-subtitle {
     font-size: 1rem;
   }
-  
+
   .service-card {
     padding: 1.5rem;
   }
-  
+
   .service-icon {
     font-size: 3rem;
   }
-  
+
   .duration-card {
     padding: 1.5rem;
   }
-  
+
   .duration-header h3 {
     font-size: 1.75rem;
   }
-  
+
   .consultation-features {
     grid-template-columns: 1fr;
   }
-  
+
   .consultation-feature {
     padding: 1.25rem;
   }
-  
+
   .approach-card {
     padding: 1.5rem;
   }
-  
+
   .approach-point {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
   }
-  
+
   .services-cta h2 {
     font-size: 2rem;
   }
-  
+
   .services-cta p {
     font-size: 1rem;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     align-items: center;

@@ -33,23 +33,44 @@ const FAQ = () => {
             ]
         },
         {
-            category: 'Teaching Methods',
+            category: 'Course Options & Content',
             questions: [
                 {
-                    question: 'What makes your teaching approach different?',
-                    answer: 'I use "holistic language teaching" - targeting your personal interests to make learning engaging. My unique "project courses" using books, podcasts, or series are something you won\'t find elsewhere!'
+                    question: 'What\'s the difference between one-to-one and group classes?',
+                    answer: 'One-to-one classes offer complete personalization and flexibility, while group classes (3-8 students) provide collaborative learning at a lower cost. Both formats offer the same course content options.'
+                },
+                {
+                    question: 'What course content options do you offer?',
+                    answer: 'I offer: Exam preparation, General English (with or without textbook), Project courses (Book Club, Podcast Club, Cinema Club), and Conversation sessions. One-to-one students can also choose "Customize your course" for specific learning goals.'
                 },
                 {
                     question: 'What are project courses?',
-                    answer: 'These are my signature courses where we study a specific book, podcast, or TV series together. Choose from Book Club, Podcast Club, or Cinema Club - learning English through content you actually enjoy!'
+                    answer: 'These are my signature courses where we study a specific book, podcast, or TV series together. Choose from Book Club, Podcast Club, or Cinema Club - learning English through content you actually enjoy! Available for both individual and group students.'
                 },
                 {
-                    question: 'What materials do you use?',
-                    answer: 'I combine Oxford Premium platform textbooks (you purchase your own copy), my custom Google Docs and Forms materials, plus external resources like novels, podcasts, and series for project courses.'
+                    question: 'What\'s the difference between General English with and without textbook?',
+                    answer: 'With textbook uses structured Oxford Premium materials for systematic progression. Without textbook uses my custom Google Docs, Forms, and activities for more flexible, interest-based learning.'
+                }
+            ]
+        },
+        {
+            category: 'Pricing & Packages',
+            questions: [
+                {
+                    question: 'How much do one-to-one lessons cost?',
+                    answer: 'Single lessons are £25/hour. I offer package discounts: 5-lesson pack for £118.75 (5% off) and 10-lesson pack for £225 (10% off). Packages secure your preferred times and provide better value.'
                 },
                 {
-                    question: 'How do you maximize speaking practice?',
-                    answer: 'I focus on Student Talk Time (STT) - getting you to actively use English rather than just listening. Even grammar lessons include plenty of speaking practice to consolidate learning.'
+                    question: 'How much do group classes cost?',
+                    answer: 'Group classes vary by duration: 1 month intensive (£240), 3 months from £342 (5% discount), and 9 months for £972 (10% discount). All prices are per student for the complete course.'
+                },
+                {
+                    question: 'What\'s included in the group class pricing?',
+                    answer: 'One month: 24 hours total (6hrs/week for 4 weeks). Three months: choice of 36 hours standard or 72 hours intensive. Nine months: 108 hours (3hrs/week for 36 weeks).'
+                },
+                {
+                    question: 'Why do you require payment in advance?',
+                    answer: 'Advance payment secures your preferred time slots, provides package discounts, and helps you stay committed to your learning goals. You can cancel or reschedule with 24 hours notice.'
                 }
             ]
         },
@@ -58,61 +79,40 @@ const FAQ = () => {
             questions: [
                 {
                     question: 'How flexible is the scheduling?',
-                    answer: 'Very flexible! I offer one-on-one lessons that work around your schedule, plus group classes at set times. You can book lesson-by-lesson or choose 1, 3, or 9-month course packages.'
-                },
-                {
-                    question: 'Can I cancel or reschedule lessons?',
-                    answer: 'Yes! You can cancel or reschedule with at least 24 hours notice at no charge. This gives us both flexibility while maintaining a consistent learning schedule.'
+                    answer: 'Very flexible! One-to-one lessons work around your schedule, while group classes have set times. I offer 1, 3, or 9-month course durations to match your availability and goals.'
                 },
                 {
                     question: 'What are your available hours?',
                     answer: 'I\'m available Monday-Friday, 9am-6pm UK time. I\'m happy to work with international students - we\'ll find times that work for your time zone!'
                 },
                 {
+                    question: 'Can I cancel or reschedule lessons?',
+                    answer: 'Yes! You can cancel or reschedule with at least 24 hours notice at no charge. This gives us both flexibility while maintaining a consistent learning schedule.'
+                },
+                {
                     question: 'How do I book lessons?',
-                    answer: 'Simply contact me through the website form or email. I\'m working on an online booking system to make this even easier! Once you pay, your spot is secured in my timetable.'
+                    answer: 'Simply contact me through the website form, selecting your preferred course format and content. I\'ll respond within 24 hours to arrange your free consultation and discuss scheduling options.'
                 }
             ]
         },
         {
-            category: 'Pricing & Payments',
+            category: 'Teaching Methods & Materials',
             questions: [
                 {
-                    question: 'What are your rates?',
-                    answer: 'One-on-one lessons are £25/hour. Group classes are £10 per student per hour (3-8 students). I offer package discounts: 5% off for 5 lessons, 10% off for 10 lessons.'
+                    question: 'What makes your teaching approach different?',
+                    answer: 'I use "holistic language teaching" - targeting your personal interests to make learning engaging. My unique "project courses" using books, podcasts, or series are something you won\'t find elsewhere!'
                 },
                 {
-                    question: 'Why do you require payment in advance?',
-                    answer: 'Advance payment secures your preferred time slots and helps you stay committed to your learning goals. Plus, you get better rates with package deals!'
+                    question: 'What materials do you use?',
+                    answer: 'I combine Oxford Premium platform textbooks (you purchase your own copy), my custom Google Docs and Forms materials, plus external resources like novels, podcasts, and series for project courses.'
                 },
                 {
-                    question: 'What payment methods do you accept?',
-                    answer: 'I accept PayPal and plan to add Stripe for better exchange rates. Both are secure, international payment platforms perfect for online students.'
+                    question: 'How do you maximize speaking practice?',
+                    answer: 'I focus on Student Talk Time (STT) - getting you to actively use English rather than just listening. Even grammar lessons include plenty of speaking practice to consolidate learning.'
                 },
-                {
-                    question: 'Are there any hidden fees?',
-                    answer: 'None! The price you see is what you pay. The free consultation, level test, needs assessment, and student portal access are all included.'
-                }
-            ]
-        },
-        {
-            category: 'Courses & Exams',
-            questions: [
                 {
                     question: 'Which exams can you help me prepare for?',
                     answer: 'I have extensive experience with Cambridge exams (A2 Key to C2 Proficiency), IELTS, TOEFL, and Oxford Test of English (OTE). I\'ll create a tailored preparation plan for your target exam.'
-                },
-                {
-                    question: 'How long does exam preparation take?',
-                    answer: 'It depends on your current level and target exam. Typically 1-9 months of focused preparation. We\'ll assess your needs during the consultation and create a realistic timeline.'
-                },
-                {
-                    question: 'Can I join a course that\'s already started?',
-                    answer: 'Sometimes! It depends on the course type and how far along the group is. Contact me to discuss joining an ongoing course - I may be able to accommodate late joiners.'
-                },
-                {
-                    question: 'What if I need to stop my course early?',
-                    answer: 'Life happens! Contact me if you need to adjust or pause your studies. While I prefer advance notice, I\'m understanding about genuine circumstances and will work with you to find a solution.'
                 }
             ]
         }
@@ -135,7 +135,7 @@ const FAQ = () => {
                         </p>
                         <p className="faq-description">
                             Get answers to the most common questions about my teaching methods,
-                            scheduling, pricing, and course offerings. Can't find what you're looking for?
+                            course options, pricing, and scheduling. Can't find what you're looking for?
                             Feel free to contact me directly!
                         </p>
                     </motion.div>

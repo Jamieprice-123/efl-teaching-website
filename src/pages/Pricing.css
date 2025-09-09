@@ -67,7 +67,7 @@
 /* Pricing Plans */
 .plans-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
 }
 
@@ -127,12 +127,29 @@
 
 .card-header h3 {
     color: var(--text-dark);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 1.4rem;
+}
+
+.course-type {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .price-display {
     margin-bottom: 1rem;
+    position: relative;
+}
+
+.original-price {
+    color: var(--text-light);
+    text-decoration: line-through;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    display: block;
+    font-weight: 500;
 }
 
 .price {
@@ -158,24 +175,26 @@
 }
 
 .features-section,
-.packages-section {
+.details-section {
     margin-bottom: 2rem;
 }
 
 .features-section h4,
-.packages-section h4 {
+.details-section h4 {
     color: var(--text-dark);
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
 
-.features-list {
+.features-list,
+.details-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.features-list li {
+.features-list li,
+.details-list li {
     color: var(--text-light);
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
@@ -191,143 +210,17 @@
     left: 0;
 }
 
-.packages-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.package-item {
-    background: #F8F9FA;
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    border-left: 4px solid var(--primary-color);
-}
-
-.package-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.package-lessons {
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 0.95rem;
-}
-
-.package-price {
-    font-weight: 700;
-    color: var(--primary-color);
-    font-size: 1rem;
-}
-
-.package-savings {
+.details-list li::before {
+    content: '•';
     color: var(--secondary-color);
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
 .card-footer {
     padding: 1.5rem 2rem 2rem;
     text-align: center;
-}
-
-/* Duration Pricing */
-.duration-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.duration-card {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-.duration-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-}
-
-.duration-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-}
-
-.duration-header {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.duration-header h3 {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.duration-header p {
-    color: var(--text-light);
-    line-height: 1.6;
-}
-
-.duration-pricing {
-    margin-bottom: 1.5rem;
-}
-
-.pricing-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #F0F0F0;
-}
-
-.pricing-row:last-child {
-    border-bottom: none;
-}
-
-.pricing-label {
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.pricing-value {
-    color: var(--primary-color);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.duration-features ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.duration-features li {
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-    font-size: 0.9rem;
-}
-
-.duration-features li::before {
-    content: '⭐';
-    position: absolute;
-    left: 0;
 }
 
 /* Additional Services */
@@ -584,15 +477,6 @@
         padding: 1rem 1.5rem 1.5rem;
     }
 
-    .duration-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .duration-card {
-        padding: 1.5rem;
-    }
-
     .services-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1.5rem;
@@ -651,14 +535,6 @@
 
     .price {
         font-size: 2rem;
-    }
-
-    .duration-card {
-        padding: 1.25rem;
-    }
-
-    .duration-header h3 {
-        font-size: 1.5rem;
     }
 
     .service-item {
