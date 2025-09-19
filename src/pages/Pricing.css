@@ -3,6 +3,11 @@
     background: linear-gradient(135deg, rgba(129, 212, 227, 0.1), rgba(253, 180, 98, 0.1));
     padding: 120px 0 80px;
     text-align: center;
+    transition: background 0.3s ease;
+}
+
+.dark-mode .pricing-hero {
+    background: var(--hero-bg);
 }
 
 .pricing-hero-content h1 {
@@ -39,6 +44,7 @@
     border-radius: var(--border-radius);
     text-align: center;
     box-shadow: var(--shadow);
+    transition: background 0.3s ease;
 }
 
 .consultation-content h3 {
@@ -64,35 +70,58 @@
     color: white;
 }
 
-/* Pricing Plans */
-.plans-grid {
+/* Course Durations with Mascots - FIXED */
+.course-durations-with-mascots {
+    padding: 80px 0;
+    background: #F8F9FA;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .course-durations-with-mascots {
+    background: var(--bg-secondary);
+}
+
+.mascot-courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.pricing-card {
+.mascot-course-card {
     background: white;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    overflow: hidden;
+    padding: 2rem;
+    text-align: center;
     transition: var(--transition);
     position: relative;
     border: 3px solid transparent;
+    overflow: visible; /* Allow mascot images to show fully */
 }
 
-.pricing-card:hover {
+.dark-mode .mascot-course-card {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.mascot-course-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     border-color: var(--primary-color);
 }
 
-.pricing-card.popular {
+.dark-mode .mascot-course-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.mascot-course-card.most-popular {
     border-color: var(--secondary-color);
     transform: scale(1.05);
 }
 
-.pricing-card.popular:hover {
+.mascot-course-card.most-popular:hover {
     transform: scale(1.05) translateY(-8px);
 }
 
@@ -110,10 +139,196 @@
     z-index: 10;
 }
 
+.mascot-header {
+    margin-bottom: 2rem;
+    padding-top: 0.5rem; /* Reduced padding since container is taller */
+}
+
+/* FIXED: Mascot Image Container */
+.mascot-image {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px; /* Taller container for full animals */
+    width: 100px; /* Narrower width */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+/* FIXED: Actual mascot images */
+.mascot-image img {
+    width: 100px;
+    height: 120px;
+    object-fit: contain; /* Show full image without cropping */
+    object-position: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+    border: 3px solid transparent;
+    background: white; /* White background for transparency */
+}
+
+.dark-mode .mascot-image img {
+    background: var(--card-bg);
+}
+
+.mascot-course-card:hover .mascot-image img {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    border-color: var(--primary-color);
+}
+
+/* FIXED: Placeholder for when images aren't loaded */
+.mascot-placeholder {
+    font-size: 3rem;
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 120px;
+    line-height: 120px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+}
+
+.mascot-course-card h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.course-type {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.pricing-display {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #F8F9FA;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .pricing-display {
+    background: var(--bg-tertiary);
+}
+
+.original-price {
+    color: var(--text-light);
+    text-decoration: line-through;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.current-price {
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.pricing-note {
+    display: block;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.hours-info {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+.course-features h4 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.course-features ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.course-features li {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.course-features li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Pricing Plans */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+    border: 3px solid transparent;
+}
+
+.dark-mode .pricing-card {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.dark-mode .pricing-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-card.popular {
+    border-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.pricing-card.popular:hover {
+    transform: scale(1.05) translateY(-8px);
+}
+
 .card-header {
     padding: 2.5rem 2rem 2rem;
     text-align: center;
     background: linear-gradient(135deg, rgba(129, 212, 227, 0.05), rgba(253, 180, 98, 0.05));
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .card-header {
+    background: linear-gradient(135deg, rgba(91, 192, 222, 0.1), rgba(243, 156, 18, 0.1));
 }
 
 .plan-icon {
@@ -131,39 +346,6 @@
     font-size: 1.4rem;
 }
 
-.course-type {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.price-display {
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.original-price {
-    color: var(--text-light);
-    text-decoration: line-through;
-    font-size: 1.2rem;
-    margin-right: 0.5rem;
-    display: block;
-    font-weight: 500;
-}
-
-.price {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.unit {
-    color: var(--text-light);
-    font-size: 1rem;
-    margin-left: 0.5rem;
-}
-
 .plan-description {
     color: var(--text-light);
     line-height: 1.6;
@@ -172,6 +354,12 @@
 
 .card-body {
     padding: 2rem;
+    background: white;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .card-body {
+    background: var(--card-bg);
 }
 
 .features-section,
@@ -221,6 +409,12 @@
 .card-footer {
     padding: 1.5rem 2rem 2rem;
     text-align: center;
+    background: white;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .card-footer {
+    background: var(--card-bg);
 }
 
 /* Additional Services */
@@ -239,9 +433,18 @@
     transition: var(--transition);
 }
 
+.dark-mode .service-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
 .service-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .service-item:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .service-icon {
@@ -309,6 +512,12 @@
     padding: 2.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
 }
 
 .highlight-card h3 {
@@ -359,6 +568,11 @@
     background: var(--text-dark);
     color: white;
     text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .pricing-cta {
+    background: linear-gradient(135deg, #1A1A1A, #2C2C2C);
 }
 
 .pricing-cta h2 {
@@ -405,8 +619,20 @@
     color: var(--text-dark);
 }
 
-/* Responsive Design */
+/* Responsive Design for Mascot Cards */
 @media (max-width: 1024px) {
+    .mascot-courses-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .mascot-course-card.most-popular {
+        transform: scale(1);
+    }
+
+    .mascot-course-card.most-popular:hover {
+        transform: translateY(-8px);
+    }
+
     .plans-grid {
         grid-template-columns: 1fr;
     }
@@ -455,6 +681,46 @@
 
     .consultation-content p {
         font-size: 1rem;
+    }
+
+    .mascot-courses-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .mascot-course-card {
+        padding: 1.5rem;
+    }
+
+    .mascot-image {
+        height: 100px;
+        width: 80px;
+    }
+
+    .mascot-image img {
+        width: 80px;
+        height: 100px;
+        border-radius: 12px;
+    }
+
+    .mascot-placeholder {
+        width: 80px;
+        height: 100px;
+        line-height: 100px;
+        font-size: 2.5rem;
+        border-radius: 12px;
+    }
+
+    .mascot-course-card h3 {
+        font-size: 1.75rem;
+    }
+
+    .pricing-display {
+        padding: 1.25rem;
+    }
+
+    .price {
+        font-size: 1.75rem;
     }
 
     .plans-grid {
@@ -517,6 +783,37 @@
         font-size: 1.1rem;
     }
 
+    .mascot-course-card {
+        padding: 1.25rem;
+    }
+
+    .mascot-image {
+        height: 85px;
+        width: 70px;
+    }
+
+    .mascot-image img {
+        width: 70px;
+        height: 85px;
+        border-radius: 10px;
+    }
+
+    .mascot-placeholder {
+        width: 70px;
+        height: 85px;
+        line-height: 85px;
+        font-size: 2rem;
+        border-radius: 10px;
+    }
+
+    .mascot-course-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .price {
+        font-size: 1.5rem;
+    }
+
     .plans-grid {
         gap: 1rem;
     }
@@ -531,10 +828,6 @@
 
     .card-footer {
         padding: 0.75rem 1.25rem 1.25rem;
-    }
-
-    .price {
-        font-size: 2rem;
     }
 
     .service-item {

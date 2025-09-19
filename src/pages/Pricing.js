@@ -4,74 +4,85 @@ import { motion } from 'framer-motion';
 import './Pricing.css';
 
 const Pricing = () => {
-  const oneToOnePricing = [
+  const pricingPlans = [
     {
-      type: 'Single Lesson',
-      price: '£25',
+      type: 'One-on-One Lessons',
+      icon: '👤',
+      basePrice: '£25',
       unit: 'per hour',
-      description: 'Pay-as-you-go flexibility',
-      features: ['Complete flexibility', 'No commitment required', 'Perfect for trying out lessons'],
-      popular: false
-    },
-    {
-      type: '5-Hour Pack',
-      price: '£118.75',
-      originalPrice: '£125',
-      unit: '5% discount',
-      description: 'Small commitment, small saving',
-      features: ['5% discount applied', 'Secure your preferred times', 'Better value than single lessons'],
-      popular: false
-    },
-    {
-      type: '10-Hour Pack',
-      price: '£225',
-      originalPrice: '£250',
-      unit: '10% discount',
-      description: 'Best value for one-to-one learning',
-      features: ['10% discount applied', 'Maximum savings', 'Long-term learning commitment'],
-      popular: true
-    }
-  ];
-
-  const groupCoursePricing = [
-    {
-      duration: 'One Month',
-      type: 'Intensive Course',
-      price: '£240',
-      unit: 'per student',
-      description: '6 hours per week for 4 weeks (24 hours total)',
+      description: 'Personalized instruction tailored to your specific needs',
       features: [
-        'Intensive pace',
-        'Economical hourly rate (£10/hour)',
-        'Ideal for quick results'
+        'Customized lesson plans',
+        'Flexible scheduling',
+        'Individual attention',
+        'Progress tracking',
+        'All materials included'
+      ],
+      packages: [
+        { lessons: 1, price: '£25.00', savings: null },
+        { lessons: 5, price: '£118.75', savings: '5% discount' },
+        { lessons: 10, price: '£225.00', savings: '10% discount' }
       ],
       popular: false
     },
     {
-      duration: 'Three Months',
-      type: 'Standard or Intensive',
-      price: 'From £342',
+      type: 'Group Classes',
+      icon: '👥',
+      basePrice: '£10',
+      unit: 'per student per hour',
+      description: 'Learn with other students in small groups (3-8 students)',
+      features: [
+        'Interactive group learning',
+        'Cultural exchange opportunities',
+        'Peer conversation practice',
+        'Cost-effective learning',
+        'Collaborative activities'
+      ],
+      packages: [
+        { lessons: '1 Month Course', price: 'from £240', savings: 'Small discount' },
+        { lessons: '3 Month Course', price: 'from £342', savings: 'Better discount' },
+        { lessons: '9 Month Course', price: '£972', savings: 'Best discount' }
+      ],
+      popular: true
+    }
+  ];
+
+  const courseDurations = [
+    {
+      duration: '1 Month',
+      mascot: '/images/Mascots/Cream happy.png', // Energetic ferret for quick courses
+      mascotAlt: 'Cream the ferret mascot',
+      description: 'Quick projects or intensive exam preparation',
+      pricing: '£240',
+      pricingNote: 'per student',
+      hours: '6 hours per week for 4 weeks (24 hours total)',
+      features: ['Intensive pace', 'Economical hourly rate (£10/hour)', 'Ideal for quick results'],
+      popular: false
+    },
+    {
+      duration: '3 Months',
+      mascot: '/images/Mascots/Nutmeg curious.png', // Main cat mascot for most popular option
+      mascotAlt: 'Nutmeg the cat mascot',
+      description: 'Semi-intensive courses',
+      pricing: 'From £342',
+      pricingNote: '5% discount',
       originalPrice: 'From £360',
-      unit: '5% discount',
-      description: 'Choose your pace: 3hrs/week (standard) or 6hrs/week (intensive)',
+      hours: 'Choose your pace: 3hrs/week (standard) or 6hrs/week (intensive)',
       features: [
         'Available as standard or intensive',
         '5% discount on hourly rate',
         'Ideal for more in-depth skill development'
       ],
-      details: [
-        'Standard: £342 (was £360) - 3 hours/week for 12 weeks',
-        'Intensive: £684 (was £720) - 6 hours/week for 12 weeks'
-      ],
       popular: true
     },
     {
-      duration: 'Nine Months',
-      type: 'Academic Year Course',
-      price: '£972',
-      originalPrice: '£1,080',
-      unit: '10% discount',
-      description: '3 hours per week for 36 weeks (108 hours total)',
+      duration: '9 Months',
+      mascot: '/images/Mascots/Sundae happy.png', // Loyal dog for long-term commitment
+      mascotAlt: 'Sundae the dog mascot',
+      description: 'Academic Year Course',
+      pricing: '£972',
+      pricingNote: '10% discount',
+      hours: '3 hours per week for 36 weeks (108 hours total)',
       features: [
         'Standard pace',
         '10% discount on hourly rate',
@@ -150,8 +161,8 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* One-to-One Pricing */}
-        <section className="one-to-one-pricing section">
+        {/* Course Durations with Mascots */}
+        <section className="course-durations-with-mascots section">
           <div className="container">
             <motion.div
                 className="section-title"
@@ -160,11 +171,63 @@ const Pricing = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-              <h2>One-to-One Lessons</h2>
-              <p>Personalized instruction with flexible payment options</p>
+              <h2>Course Lengths with Mascots</h2>
+              <p>Choose your ideal course duration - each with its own friendly mascot guide!</p>
             </motion.div>
+            <div className="mascot-courses-grid">
+              {courseDurations.map((course, index) => (
+                  <motion.div
+                      key={index}
+                      className={`mascot-course-card ${course.popular ? 'most-popular' : ''}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.2 }}
+                  >
+                    {course.popular && <div className="popular-badge">Most Popular</div>}
+
+                    <div className="mascot-header">
+                      <div className="mascot-image">
+                        <img src={course.mascot} alt={course.mascotAlt} />
+                      </div>
+                      <h3>{course.duration}</h3>
+                      <p className="course-type">{course.description}</p>
+                    </div>
+
+                    <div className="pricing-display">
+                      {course.originalPrice && (
+                          <div className="original-price">From £360</div>
+                      )}
+                      <div className="current-price">
+                        <span className="price">{course.pricing}</span>
+                        <span className="pricing-note">{course.pricingNote}</span>
+                      </div>
+                      <p className="hours-info">{course.hours}</p>
+                    </div>
+
+                    <div className="course-features">
+                      <h4>Course Features:</h4>
+                      <ul>
+                        {course.features.map((feature, idx) => (
+                            <li key={idx}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Main Pricing Plans */}
+        <section className="pricing-plans section bg-light">
+          <div className="container">
+            <div className="section-title">
+              <h2>Choose Your Learning Format</h2>
+              <p>Select the option that best fits your learning style and budget</p>
+            </div>
             <div className="plans-grid">
-              {oneToOnePricing.map((plan, index) => (
+              {pricingPlans.map((plan, index) => (
                   <motion.div
                       key={index}
                       className={`pricing-card ${plan.popular ? 'popular' : ''}`}
@@ -173,15 +236,12 @@ const Pricing = () => {
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
-                    {plan.popular && <div className="popular-badge">Best Value</div>}
+                    {plan.popular && <div className="popular-badge">Most Popular</div>}
                     <div className="card-header">
-                      <div className="plan-icon">👤</div>
+                      <div className="plan-icon">{plan.icon}</div>
                       <h3>{plan.type}</h3>
                       <div className="price-display">
-                        {plan.originalPrice && (
-                            <span className="original-price">£{plan.originalPrice}</span>
-                        )}
-                        <span className="price">{plan.price}</span>
+                        <span className="price">{plan.basePrice}</span>
                         <span className="unit">{plan.unit}</span>
                       </div>
                       <p className="plan-description">{plan.description}</p>
@@ -195,78 +255,26 @@ const Pricing = () => {
                           ))}
                         </ul>
                       </div>
+                      <div className="packages-section">
+                        <h4>Package Options:</h4>
+                        <div className="packages-list">
+                          {plan.packages.map((pkg, idx) => (
+                              <div key={idx} className="package-item">
+                                <div className="package-info">
+                                  <span className="package-lessons">{pkg.lessons}</span>
+                                  <span className="package-price">{pkg.price}</span>
+                                </div>
+                                {pkg.savings && (
+                                    <span className="package-savings">{pkg.savings}</span>
+                                )}
+                              </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                     <div className="card-footer">
                       <Link to="/contact" className="btn btn-primary">
                         Get Started
-                      </Link>
-                    </div>
-                  </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Group Course Pricing */}
-        <section className="group-pricing section bg-light">
-          <div className="container">
-            <motion.div
-                className="section-title"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-            >
-              <h2>Group Classes</h2>
-              <p>Structured courses with fellow students - choose your duration</p>
-            </motion.div>
-            <div className="plans-grid">
-              {groupCoursePricing.map((course, index) => (
-                  <motion.div
-                      key={index}
-                      className={`pricing-card ${course.popular ? 'popular' : ''}`}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.2 }}
-                  >
-                    {course.popular && <div className="popular-badge">Most Popular</div>}
-                    <div className="card-header">
-                      <div className="plan-icon">👥</div>
-                      <h3>{course.duration}</h3>
-                      <h4 className="course-type">{course.type}</h4>
-                      <div className="price-display">
-                        {course.originalPrice && (
-                            <span className="original-price">{course.originalPrice}</span>
-                        )}
-                        <span className="price">{course.price}</span>
-                        <span className="unit">{course.unit}</span>
-                      </div>
-                      <p className="plan-description">{course.description}</p>
-                    </div>
-                    <div className="card-body">
-                      <div className="features-section">
-                        <h4>Course Features:</h4>
-                        <ul className="features-list">
-                          {course.features.map((feature, idx) => (
-                              <li key={idx}>{feature}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      {course.details && (
-                          <div className="details-section">
-                            <h4>Pricing Details:</h4>
-                            <ul className="details-list">
-                              {course.details.map((detail, idx) => (
-                                  <li key={idx}>{detail}</li>
-                              ))}
-                            </ul>
-                          </div>
-                      )}
-                    </div>
-                    <div className="card-footer">
-                      <Link to="/contact" className="btn btn-primary">
-                        Join Group Class
                       </Link>
                     </div>
                   </motion.div>
@@ -323,7 +331,7 @@ const Pricing = () => {
                 <div className="payment-details">
                   <div className="payment-item">
                     <h4>💳 Payment Methods</h4>
-                    <p>PayPal and Stripe for secure, international transactions with the best exchange rates</p>
+                    <p>Stripe for secure, international transactions with the best exchange rates</p>
                   </div>
                   <div className="payment-item">
                     <h4>📅 Payment Policy</h4>

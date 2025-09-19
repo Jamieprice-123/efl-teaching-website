@@ -9,8 +9,9 @@ const Contact = () => {
     englishLevel: '',
     goals: '',
     availability: '',
-    courseFormat: '',
-    courseContent: '',
+    serviceInterest: '',
+    examType: '',
+    projectType: '',
     message: ''
   });
 
@@ -38,8 +39,9 @@ const Contact = () => {
         englishLevel: '',
         goals: '',
         availability: '',
-        courseFormat: '',
-        courseContent: '',
+        serviceInterest: '',
+        examType: '',
+        projectType: '',
         message: ''
       });
     }, 3000);
@@ -55,14 +57,14 @@ const Contact = () => {
     {
       icon: '📍',
       title: 'Location',
-      content: 'Stockport, UK',
+      content: 'England, UK',
       subtitle: 'Teaching online worldwide'
     },
     {
       icon: '🕐',
       title: 'Availability',
       content: 'Monday - Friday',
-      subtitle: '9:00 AM - 6:00 PM (UK Time)'
+      subtitle: '07:00-12:00 and 14:00-20:00 (UK Time)'
     },
     {
       icon: '🌍',
@@ -95,26 +97,6 @@ const Contact = () => {
     }
   ];
 
-  // Course content options based on course format
-  const getCourseContentOptions = () => {
-    const baseOptions = [
-      { value: '', label: 'Select course content' },
-      { value: 'exam-prep', label: 'Exam Preparation' },
-      { value: 'general-with-textbook', label: 'General English with Textbook' },
-      { value: 'general-without-textbook', label: 'General English without Textbook' },
-      { value: 'book-club', label: 'Book Club' },
-      { value: 'podcast-club', label: 'Podcast Club' },
-      { value: 'cinema-club', label: 'Cinema Club' },
-      { value: 'conversation', label: 'Conversation Sessions' }
-    ];
-
-    if (formData.courseFormat === 'one-to-one') {
-      return [...baseOptions, { value: 'customize', label: 'Customize Your Course' }];
-    }
-
-    return baseOptions;
-  };
-
   return (
       <div className="contact">
         {/* Hero Section */}
@@ -133,6 +115,17 @@ const Contact = () => {
               <div className="hero-highlight">
                 <span className="highlight-icon">🎯</span>
                 <span>Free 20-minute consultation • No commitment required</span>
+              </div>
+              <div className="hero-level-test">
+                <p>Not sure of your English level?</p>
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdzdWyhqj6qsR0J431OOHhiHzQgwii0S9bTMmG2BSj14ogKAQ/viewform?usp=header"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary"
+                >
+                  Take Free Level Test
+                </a>
               </div>
             </motion.div>
           </div>
@@ -153,6 +146,23 @@ const Contact = () => {
                 <div className="form-header">
                   <h2>Book Your Free Consultation</h2>
                   <p>Tell me about your English learning goals and I'll get back to you within 24 hours.</p>
+                  <div className="level-test-suggestion">
+                    <div className="level-test-card">
+                      <div className="test-icon">📝</div>
+                      <div className="test-content">
+                        <h4>Take Our Level Test First!</h4>
+                        <p>Get an instant assessment of your English level before booking your consultation.</p>
+                        <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSdzdWyhqj6qsR0J431OOHhiHzQgwii0S9bTMmG2BSj14ogKAQ/viewform?usp=header"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-secondary btn-small"
+                        >
+                          Take Level Test
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {isSubmitted ? (
@@ -213,39 +223,62 @@ const Contact = () => {
                           </select>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="courseFormat" className="form-label">Course Format *</label>
+                          <label htmlFor="serviceInterest" className="form-label">Service Interest</label>
                           <select
-                              id="courseFormat"
-                              name="courseFormat"
-                              value={formData.courseFormat}
+                              id="serviceInterest"
+                              name="serviceInterest"
+                              value={formData.serviceInterest}
                               onChange={handleChange}
                               className="form-select"
-                              required
                           >
-                            <option value="">Select format</option>
-                            <option value="one-to-one">One-to-One Classes</option>
+                            <option value="">Select a service</option>
+                            <option value="one-on-one">One-on-One Lessons</option>
                             <option value="group">Group Classes</option>
+                            <option value="textbook">Textbook Courses</option>
+                            <option value="project">Project Courses</option>
+                            <option value="exam-prep">Exam Preparation</option>
+                            <option value="general">General English</option>
+                            <option value="conversation">Conversation Classes</option>
                             <option value="consultation">Just the consultation for now</option>
                           </select>
                         </div>
                       </div>
 
-                      {formData.courseFormat && formData.courseFormat !== 'consultation' && (
+                      {/* Conditional fields based on service selection */}
+                      {formData.serviceInterest === 'exam-prep' && (
                           <div className="form-group">
-                            <label htmlFor="courseContent" className="form-label">Course Content *</label>
+                            <label htmlFor="examType" className="form-label">Exam Type</label>
                             <select
-                                id="courseContent"
-                                name="courseContent"
-                                value={formData.courseContent}
+                                id="examType"
+                                name="examType"
+                                value={formData.examType}
                                 onChange={handleChange}
                                 className="form-select"
-                                required
                             >
-                              {getCourseContentOptions().map(option => (
-                                  <option key={option.value} value={option.value}>
-                                    {option.label}
-                                  </option>
-                              ))}
+                              <option value="">Select exam type</option>
+                              <option value="cambridge">Cambridge English preparation course</option>
+                              <option value="ielts">IELTS preparation course</option>
+                              <option value="toefl">TOEFL preparation course</option>
+                              <option value="ote">Oxford Test of English preparation course</option>
+                            </select>
+                          </div>
+                      )}
+
+                      {formData.serviceInterest === 'project' && (
+                          <div className="form-group">
+                            <label htmlFor="projectType" className="form-label">Project Course Type</label>
+                            <select
+                                id="projectType"
+                                name="projectType"
+                                value={formData.projectType}
+                                onChange={handleChange}
+                                className="form-select"
+                            >
+                              <option value="">Select project type</option>
+                              <option value="book-club">Book Club</option>
+                              <option value="podcast-club">Podcast Club</option>
+                              <option value="cinema-club">Cinema Club</option>
+                              <option value="any-project">Any project course - I don't mind</option>
                             </select>
                           </div>
                       )}

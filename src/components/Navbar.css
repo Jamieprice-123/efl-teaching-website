@@ -10,9 +10,19 @@
   transition: var(--transition);
 }
 
+.dark-mode .navbar {
+  background: var(--navbar-bg);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
 .navbar.scrolled {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 2px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .navbar.scrolled {
+  background: rgba(26, 26, 26, 0.98);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-container {
@@ -125,7 +135,7 @@
     display: flex;
     z-index: 1001;
   }
-  
+
   .navbar-menu {
     position: fixed;
     top: 0;
@@ -140,16 +150,20 @@
     transition: var(--transition);
     z-index: 1000;
   }
-  
+
+  .dark-mode .navbar-menu {
+    background: var(--bg-primary);
+  }
+
   .navbar-menu.active {
     left: 0;
   }
-  
+
   .navbar-link {
     font-size: 1.2rem;
     padding: 1rem 0;
   }
-  
+
   .navbar-cta {
     margin-left: 0;
     margin-top: 1rem;
@@ -161,12 +175,40 @@
     padding: 0 15px;
     height: 60px;
   }
-  
+
   .logo-text {
     font-size: 1.3rem;
   }
-  
+
   .navbar-link {
     font-size: 1.1rem;
+  }
+}
+
+.level-test-link {
+  position: relative;
+  color: var(--secondary-color) !important;
+  font-weight: 600;
+}
+
+.level-test-link:hover {
+  color: var(--primary-color) !important;
+}
+
+.level-test-link::after {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)) !important;
+}
+
+/* Add a small indicator for external link */
+.level-test-link::before {
+  content: '📝';
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .level-test-link {
+    font-size: 1.2rem;
+    padding: 1rem 0;
   }
 }

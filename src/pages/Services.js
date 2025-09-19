@@ -6,19 +6,17 @@ import './Services.css';
 const Services = () => {
   const services = [
     {
-      title: 'One-to-One Lessons',
+      title: 'One-on-One Lessons',
       icon: '👤',
       description: 'Personalized instruction tailored to your specific goals and learning style.',
       features: [
-        'Exam preparation (Cambridge, IELTS, TOEFL, OTE)',
-        'General English with textbook',
-        'General English without textbook',
-        'Project courses: Book Club, Podcast Club, Cinema Club',
-        'Conversation sessions',
-        'Customize your course (tell me what you want to work on)'
+        'Customized lesson plans based on your needs',
+        'Flexible scheduling to fit your lifestyle',
+        'Individual attention and immediate feedback',
+        'Progress tracking and regular assessments'
       ],
       levels: 'All levels (A1-C2)',
-      pricing: 'Single lesson: £25/hour | 5-pack: £118.75 | 10-pack: £225',
+      duration: '1-2 hours per session',
       format: 'Online via video conferencing'
     },
     {
@@ -26,47 +24,29 @@ const Services = () => {
       icon: '👥',
       description: 'Interactive group sessions for collaborative learning with students worldwide.',
       features: [
-        'Exam preparation (Cambridge, IELTS, TOEFL, OTE)',
-        'General English with textbook',
-        'General English without textbook',
-        'Project courses: Book Club, Podcast Club, Cinema Club',
-        'Conversation sessions'
+        'Learn with students from diverse backgrounds',
+        'Practice conversation with peers',
+        'Cost-effective alternative to private lessons',
+        'Collaborative learning activities'
       ],
-      levels: 'All levels (A1-C2)',
-      pricing: '1 month: £240 | 3 months: from £342 | 9 months: £972',
+      levels: 'Beginner to Advanced',
+      duration: '1-2 hours per session',
       format: 'Online group sessions (3-8 students)'
     },
     {
-      title: 'Exam Preparation',
-      icon: '🎯',
-      description: 'Comprehensive preparation for major English proficiency exams.',
+      title: 'Textbook Courses',
+      icon: '📖',
+      description: 'Structured learning with professional Oxford textbook series - New English File or Headway.',
       features: [
-        'Cambridge suite (A2 Key to C2 Proficiency)',
-        'IELTS Academic and General Training',
-        'TOEFL iBT preparation',
-        'Oxford Test of English (OTE)',
-        'Intensive 1-month courses available',
-        'Practice tests and exam strategies'
-      ],
-      levels: 'Upper Intermediate to Advanced (B2-C2)',
-      pricing: 'Available in both one-to-one and group formats',
-      format: 'Individual or group intensive courses'
-    },
-    {
-      title: 'General English',
-      icon: '🌟',
-      description: 'Comprehensive English skills development with or without textbooks.',
-      features: [
-        'With textbook: Structured Oxford Premium materials',
-        'Without textbook: Custom materials and activities',
-        'Grammar and vocabulary building',
+        'Choose between New English File or Headway series',
+        'Comprehensive grammar and vocabulary',
         'All four skills: reading, writing, listening, speaking',
-        'Real-world English usage',
-        'Progress tracking and assessments'
+        'Structured progression through levels',
+        'Students purchase their own textbook copy'
       ],
-      levels: 'Beginner to Advanced (A1-C2)',
-      pricing: 'Same rates as standard one-to-one or group classes',
-      format: 'Individual lessons or group classes'
+      levels: 'All levels (A1-C2)',
+      duration: '1-9 months depending on course length',
+      format: 'Available for individuals and groups'
     },
     {
       title: 'Project Courses',
@@ -76,13 +56,44 @@ const Services = () => {
         'Book Club: Read and discuss novels together',
         'Podcast Club: Listen and analyze podcasts',
         'Cinema Club: Watch and discuss films or TV series',
-        'Interest-based learning approach',
-        'Vocabulary and cultural context',
-        'Discussion and critical thinking skills'
+        'Any project course - I don\'t mind (follow teacher recommendations)'
       ],
       levels: 'Intermediate to Advanced (B1-C2)',
-      pricing: 'Available in 1, 3, or 9-month courses',
-      format: 'Available for individuals and groups'
+      duration: '1-9 months depending on project',
+      format: 'Available for individuals and groups',
+      additionalInfo: 'Once you have enrolled in this course, your teacher will send you a poll with three different options for the material to study. Once a decision has been reached, you will need to buy the chosen book or take out a Netflix subscription. In the case of podcasts, the material is always taken from websites that are freely available to everyone, so no purchase is needed.'
+    },
+    {
+      title: 'Exam Preparation',
+      icon: '🎯',
+      description: 'Comprehensive preparation for Cambridge, IELTS, TOEFL, and Oxford Test of English.',
+      features: [
+        'Cambridge English preparation (A2 Key to C2 Proficiency)',
+        'IELTS Academic and General Training',
+        'TOEFL iBT preparation',
+        'Oxford Test of English (OTE)',
+        'Practice tests and exam strategies',
+        'Intensive preparation courses available'
+      ],
+      levels: 'Upper Intermediate to Advanced (B2-C2)',
+      duration: '1-9 months intensive preparation',
+      format: 'Individual or group intensive courses'
+    },
+    {
+      title: 'General English',
+      icon: '🌟',
+      description: 'Grammar, vocabulary, and conversation classes for everyday English skills.',
+      features: [
+        'Comprehensive grammar instruction',
+        'Vocabulary building exercises',
+        'Conversation practice sessions',
+        'Real-world English usage',
+        'Custom materials and activities',
+        'All four skills development'
+      ],
+      levels: 'Beginner to Intermediate (A1-B1)',
+      duration: '1-9 months courses available',
+      format: 'Individual lessons or group classes'
     },
     {
       title: 'Conversation Classes',
@@ -97,7 +108,7 @@ const Services = () => {
         'Confidence building exercises'
       ],
       levels: 'Intermediate to Advanced (B1-C2)',
-      pricing: 'Same rates as standard classes',
+      duration: 'Ongoing or structured courses',
       format: 'Group conversations or individual practice'
     }
   ];
@@ -105,30 +116,21 @@ const Services = () => {
   const courseDurations = [
     {
       duration: '1 Month',
-      type: 'Intensive Courses',
-      description: 'Perfect for quick results or intensive exam preparation',
-      groupPrice: '£240 per student',
-      groupHours: 'Six hours per week for four weeks',
-      oneToOnePrice: 'Package discounts available',
-      benefits: ['Intensive pace', 'Economical hourly rate', 'Ideal for quick results']
+      type: 'Quick Projects & Intensive Prep',
+      description: 'Perfect for short-term goals or intensive exam preparation',
+      benefits: ['Small discount on hourly rate', 'Focused learning objectives', 'Quick results']
     },
     {
       duration: '3 Months',
-      type: 'Standard or Intensive',
-      description: 'Ideal for comprehensive skill development with flexibility',
-      groupPrice: 'From £342 per student (5% discount)',
-      groupHours: 'Standard: 3hrs/week | Intensive: 6hrs/week',
-      oneToOnePrice: '5% discount on lesson packages',
-      benefits: ['Available as standard or intensive', '5% discount on hourly rate', 'Ideal for more in-depth skill development']
+      type: 'Semi-Intensive Courses',
+      description: 'Ideal for quick level progression or mid-length projects',
+      benefits: ['Better discount on hourly rate', 'Comprehensive skill development', 'Structured progression']
     },
     {
       duration: '9 Months',
-      type: 'Academic Year Course',
+      type: 'Academic Year Courses',
       description: 'Complete language learning journey with maximum support',
-      groupPrice: '£972 per student (10% discount)',
-      groupHours: 'Three hours per week for 36 weeks',
-      oneToOnePrice: '10% discount on lesson packages',
-      benefits: ['Standard pace', '10% discount on hourly rate', 'Ideal for long-term consolidation of information']
+      benefits: ['Best discount rates', 'Guaranteed timetable spot', 'Long-term progression tracking']
     }
   ];
 
@@ -148,8 +150,8 @@ const Services = () => {
                 Comprehensive English instruction tailored to your goals, interests, and schedule
               </p>
               <p className="services-description">
-                From one-on-one personalized lessons to unique project courses, I offer a range of
-                services designed to make learning English engaging, effective, and enjoyable.
+                From one-on-one personalized lessons to unique project courses and structured textbook learning,
+                I offer a range of services designed to make learning English engaging, effective, and enjoyable.
               </p>
             </motion.div>
           </div>
@@ -179,7 +181,7 @@ const Services = () => {
                           <strong>Levels:</strong> {service.levels}
                         </div>
                         <div className="info-item">
-                          <strong>Pricing:</strong> {service.pricing}
+                          <strong>Duration:</strong> {service.duration}
                         </div>
                         <div className="info-item">
                           <strong>Format:</strong> {service.format}
@@ -192,6 +194,12 @@ const Services = () => {
                               <li key={idx}>{feature}</li>
                           ))}
                         </ul>
+                        {service.additionalInfo && (
+                            <div className="additional-info">
+                              <h5>How it works:</h5>
+                              <p>{service.additionalInfo}</p>
+                            </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -200,7 +208,7 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Course Duration Breakdown */}
+        {/* Course Durations */}
         <section className="course-durations section bg-light">
           <div className="container">
             <motion.div
@@ -210,7 +218,7 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-              <h2>Course Duration & Pricing Options</h2>
+              <h2>Course Duration Options</h2>
               <p>Choose the course length that best fits your schedule and learning goals</p>
             </motion.div>
             <div className="durations-grid">
@@ -228,21 +236,8 @@ const Services = () => {
                       <h4>{course.type}</h4>
                     </div>
                     <p className="duration-description">{course.description}</p>
-
-                    <div className="duration-pricing">
-                      <div className="pricing-section">
-                        <h5>Group Classes:</h5>
-                        <p><strong>{course.groupPrice}</strong></p>
-                        <p className="hours-info">{course.groupHours}</p>
-                      </div>
-                      <div className="pricing-section">
-                        <h5>One-to-One:</h5>
-                        <p><strong>{course.oneToOnePrice}</strong></p>
-                      </div>
-                    </div>
-
                     <div className="duration-benefits">
-                      <h5>Course Features:</h5>
+                      <h5>Benefits:</h5>
                       <ul>
                         {course.benefits.map((benefit, idx) => (
                             <li key={idx}>{benefit}</li>
@@ -272,12 +267,25 @@ const Services = () => {
               </p>
               <div className="consultation-features">
                 <div className="consultation-feature">
+                  <h4>📝 Free Level Test</h4>
+                  <p>Take our online assessment to determine your current English level</p>
+                  <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSdzdWyhqj6qsR0J431OOHhiHzQgwii0S9bTMmG2BSj14ogKAQ/viewform?usp=header"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary btn-small"
+                      style={{marginTop: '1rem'}}
+                  >
+                    Take Level Test
+                  </a>
+                </div>
+                <div className="consultation-feature">
                   <h4>📋 Needs Assessment</h4>
                   <p>Complete a questionnaire before our meeting</p>
                 </div>
                 <div className="consultation-feature">
                   <h4>🗣️ Speaking Assessment</h4>
-                  <p>Evaluate your current spoken English level</p>
+                  <p>Evaluate your current spoken English level during consultation</p>
                 </div>
                 <div className="consultation-feature">
                   <h4>🎯 Goal Setting</h4>
@@ -314,7 +322,7 @@ const Services = () => {
                 <div className="materials-list">
                   <div className="material-item">
                     <h4>📚 Oxford Premium Platform</h4>
-                    <p>Professional textbooks and online resources (students purchase their own copy)</p>
+                    <p>Professional textbooks: New English File and Headway series (students purchase their own copy)</p>
                   </div>
                   <div className="material-item">
                     <h4>📝 Custom Materials</h4>
