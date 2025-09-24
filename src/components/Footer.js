@@ -105,14 +105,6 @@ const Footer = () => {
                   >
                     🎵 TikTok
                   </a>
-                  <a
-                      href="https://tusclasesparticulares.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="social-link"
-                  >
-                    🌐 TusClases
-                  </a>
                 </div>
               </div>
             </div>

@@ -4,66 +4,6 @@ import { motion } from 'framer-motion';
 import TestimonialCard from '../components/TestimonialCard';
 import './Testimonials.css';
 
-/* Additional CSS for language selector - add to Testimonials.css */
-const additionalCSS = `
-.language-selection {
-    text-align: center;
-    padding: 2rem 0;
-    background: #F8F9FA;
-}
-
-.language-selector h3 {
-    color: var(--text-dark);
-    margin-bottom: 2rem;
-    font-size: 1.3rem;
-}
-
-.language-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.language-btn {
-    padding: 0.75rem 1.5rem;
-    border: 2px solid var(--primary-color);
-    background: transparent;
-    color: var(--primary-color);
-    border-radius: 25px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 0.95rem;
-}
-
-.language-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-}
-
-.language-btn.active {
-    background: var(--primary-color);
-    color: white;
-    box-shadow: 0 4px 15px rgba(129, 212, 227, 0.3);
-}
-
-@media (max-width: 768px) {
-    .language-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .language-btn {
-        width: 200px;
-    }
-}
-`;
-
-export { additionalCSS };
-
 const Testimonials = () => {
     const [selectedLanguage, setSelectedLanguage] = useState('english');
 
@@ -77,7 +17,7 @@ const Testimonials = () => {
             },
             {
                 name: 'Laura',
-                level: 'Advanced Student',
+                level: 'Upper-intermediate group student',
                 text: 'The classes are dynamic; they keep you interested and motivated to keep learning. She\'s one of the best English teachers I\'ve ever had! Thank you very much, Rose!',
                 rating: 5
             },
@@ -101,7 +41,7 @@ const Testimonials = () => {
             },
             {
                 name: 'Aurélie',
-                level: 'Advanced Student',
+                level: 'Upper-intermediate group student',
                 text: 'I\'ve loved the classes with Rosamund. She has exemplary teaching skills. She is very patient and very pleasant. Her classes are dynamic and fun. I\'ve made a lot of progress thanks to her.',
                 rating: 5
             },
@@ -113,7 +53,7 @@ const Testimonials = () => {
             },
             {
                 name: 'Sergi',
-                level: 'Individual Lesson Student',
+                level: 'Exam preparation student',
                 text: 'Working with Rose has been a very good experience. She is a very attentive and effective teacher, and she adapts the classes perfectly to each person. She also makes the material easy to understand.',
                 rating: 5
             },
@@ -131,7 +71,7 @@ const Testimonials = () => {
             },
             {
                 name: 'Alex',
-                level: 'All Levels Student',
+                level: 'Upper-intermediate group student',
                 text: 'Rose is a very good teacher. She personally prepares each class for each student. 100% recommendable for any level from A1 to C1.',
                 rating: 5
             },
@@ -169,11 +109,34 @@ const Testimonials = () => {
             },
             {
                 name: 'Laura',
-                level: 'Estudiante Avanzada',
+                level: 'Estudiante de grupo intermedio-alto',
                 text: 'Las clases son dinámicas, hace que mantengas interés y ganas en seguir aprendiendo. Es una de las mejores profesoras de inglés que he tenido! Muchas gracias Rose!',
                 rating: 5
             },
-            // Add more Spanish testimonials here...
+            {
+                name: 'Sara',
+                level: 'Estudiante B2.2',
+                text: 'Es una súper profesora!!! Me ha ayudado muchísimo en mi curso B2.2. Es muy fácil entenderla cuando habla, es amable y sigue el ritmo de sus estudiantes. Normalmente hace algunos juegos para que no nos aburriéramos, aprecio esta forma de enseñar, fue muy divertido. Recomiendo absolutamente sus clases.',
+                rating: 5
+            },
+            {
+                name: 'Blanca',
+                level: 'Estudiante de Inglés General',
+                text: 'Me gusta mucho su forma de enseñar, ya que explica las cosas las veces que sean necesarias, entre otras cosas.',
+                rating: 5
+            },
+            {
+                name: 'Sergi',
+                level: 'Estudiante de preparación de exámenes',
+                text: 'Trabajar con Rose ha sido una muy buena experiencia. Es una profesora muy atenta y eficaz, y adapta las clases perfectamente a cada persona. También hace que el material sea fácil de entender.',
+                rating: 5
+            },
+            {
+                name: 'Mar',
+                level: 'Estudiante de Inglés General',
+                text: 'Es muy buena profesora; las clases pasan rápido y aprender inglés con ella se vuelve más ameno. Sin duda, una de las mejores profesoras de inglés que he tenido.',
+                rating: 5
+            }
         ],
         french: [
             {
@@ -182,16 +145,44 @@ const Testimonials = () => {
                 text: 'Les cours ont vraiment très bien fonctionné pour moi. Je venais d\'une autre école de langues à la recherche de cours qui répondraient à mes besoins, et c\'est exactement ce que j\'ai trouvé avec Rose. C\'était une très bonne professeure, et le fait que les cours aient lieu uniquement en petits groupes a beaucoup facilité l\'apprentissage. Et bien sûr, à la fin j\'ai réussi le First, qui était mon objectif principal — donc je donne à cette expérience un 10 sur 10.',
                 rating: 5
             },
-            // Add more French testimonials here...
+            {
+                name: 'Laura',
+                level: 'Étudiante de groupe intermédiaire-supérieur',
+                text: 'Les cours sont dynamiques ; ils maintiennent votre intérêt et vous motivent à continuer d\'apprendre. C\'est l\'une des meilleures professeurs d\'anglais que j\'aie jamais eue ! Merci beaucoup, Rose !',
+                rating: 5
+            },
+            {
+                name: 'Aurélie',
+                level: 'Étudiante de groupe intermédiaire-supérieur',
+                text: 'J\'ai adoré les cours avec Rosamund. Elle a des compétences d\'enseignement exemplaires. Elle est très patiente et très agréable. Ses cours sont dynamiques et amusants. J\'ai fait beaucoup de progrès grâce à elle.',
+                rating: 5
+            },
+            {
+                name: 'Sara',
+                level: 'Étudiante B2.2',
+                text: 'C\'est une super professeure !!! Elle m\'a tellement aidée dans mon cours B2.2. Il est très facile de la comprendre quand elle parle, elle est gentille et suit le rythme de ses étudiants. Elle fait généralement des jeux pour qu\'on ne s\'ennuie pas, j\'apprécie cette façon d\'enseigner, c\'était très amusant. Je recommande absolument ses cours.',
+                rating: 5
+            }
         ],
         german: [
             {
                 name: 'Jan',
                 level: 'Cambridge First Student',
-                text: 'Der Unterricht hat für mich wirklich sehr gut funktioniert. Ich kam von einer anderen Sprachschule und suchte nach Kursen, die zu meinen Bedürfnissen passten, und genau das habe ich bei Rosamund gefunden. Sie war eine sehr gute Lehrerin, und die Tatsache, dass der Unterricht nur in kleinen Gruppen stattfand, hat das Lernen viel erleichtert. Und natürlich habe ich am Ende das First bestanden, was mein Hauptziel war — deshalb bekommt die Erfahrung von mir eine glatte 10 von 10.',
+                text: 'Der Unterricht hat für mich wirklich sehr gut funktioniert. Ich kam von einer anderen Sprachschule und suchte nach Kursen, die zu meinen Bedürfnissen passten, und genau das habe ich bei Rose gefunden. Sie war eine sehr gute Lehrerin, und die Tatsache, dass der Unterricht nur in kleinen Gruppen stattfand, hat das Lernen viel erleichtert. Und natürlich habe ich am Ende das First bestanden, was mein Hauptziel war — deshalb bekommt die Erfahrung von mir eine glatte 10 von 10.',
                 rating: 5
             },
-            // Add more German testimonials here...
+            {
+                name: 'Laura',
+                level: 'Fortgeschrittene Gruppenstudentin',
+                text: 'Der Unterricht ist dynamisch; er hält das Interesse aufrecht und motiviert zum Weiterlernen. Sie ist eine der besten Englischlehrerinnen, die ich je hatte! Vielen Dank, Rose!',
+                rating: 5
+            },
+            {
+                name: 'Sara',
+                level: 'B2.2 Studentin',
+                text: 'Sie ist eine super Lehrerin!!! Sie hat mir so sehr in meinem B2.2 Kurs geholfen. Es ist sehr einfach, sie zu verstehen, wenn sie spricht, sie ist freundlich und folgt dem Rhythmus ihrer Schüler. Normalerweise macht sie Spiele, damit wir uns nicht langweilen, ich schätze diese Art zu unterrichten, es war sehr lustig. Ich empfehle ihre Kurse absolut.',
+                rating: 5
+            }
         ],
         italian: [
             {
@@ -200,7 +191,18 @@ const Testimonials = () => {
                 text: 'Le lezioni hanno funzionato davvero molto bene per me. Venivo da un\'altra scuola di lingue alla ricerca di corsi che si adattassero alle mie esigenze, e li ho trovati proprio con Rose. È stata un\'ottima insegnante, e il fatto che le lezioni fossero solo in piccoli gruppi ha reso l\'apprendimento molto più semplice. E naturalmente, alla fine ho superato il First, che era il mio obiettivo principale — quindi do a questa esperienza un bel 10 su 10.',
                 rating: 5
             },
-            // Add more Italian testimonials here...
+            {
+                name: 'Laura',
+                level: 'Studentessa di gruppo intermedio-superiore',
+                text: 'Le lezioni sono dinamiche; mantengono il tuo interesse e ti motivano a continuare ad imparare. È una delle migliori insegnanti di inglese che abbia mai avuto! Grazie mille, Rose!',
+                rating: 5
+            },
+            {
+                name: 'Sara',
+                level: 'Studentessa B2.2',
+                text: 'È una super insegnante!!! Mi ha aiutato moltissimo nel mio corso B2.2. È molto facile capirla quando parla, è gentile e segue il ritmo dei suoi studenti. Di solito fa dei giochi per non farci annoiare, apprezzo questo modo di insegnare, è stato molto divertente. Raccomando assolutamente le sue lezioni.',
+                rating: 5
+            }
         ]
     };
 

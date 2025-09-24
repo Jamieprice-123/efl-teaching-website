@@ -3,6 +3,11 @@
   background: linear-gradient(135deg, rgba(129, 212, 227, 0.1), rgba(253, 180, 98, 0.1));
   padding: 120px 0 80px;
   text-align: center;
+  transition: background 0.3s ease;
+}
+
+.dark-mode .services-hero {
+  background: var(--hero-bg);
 }
 
 .services-hero-content h1 {
@@ -42,10 +47,19 @@
   border: 3px solid transparent;
 }
 
+.dark-mode .service-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   border-color: var(--primary-color);
+}
+
+.dark-mode .service-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .service-header {
@@ -77,6 +91,11 @@
 .service-details {
   border-top: 2px solid #F0F0F0;
   padding-top: 2rem;
+  transition: border-color 0.3s ease;
+}
+
+.dark-mode .service-details {
+  border-top-color: var(--border-color);
 }
 
 .service-info {
@@ -139,6 +158,11 @@
   overflow: hidden;
 }
 
+.dark-mode .duration-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
 .duration-card::before {
   content: '';
   position: absolute;
@@ -152,6 +176,10 @@
 .duration-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .duration-card:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
 }
 
 .duration-header {
@@ -183,6 +211,11 @@
   padding: 1.5rem;
   border-radius: var(--border-radius);
   margin-bottom: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .duration-pricing {
+  background: var(--bg-tertiary);
 }
 
 .pricing-section {
@@ -247,6 +280,7 @@
   position: relative;
   overflow: hidden;
   padding: 0;
+  transition: background 0.3s ease;
 }
 
 /* Add dark overlay for better text contrast */
@@ -259,6 +293,11 @@
   bottom: 0;
   background: rgba(44, 62, 80, 0.75);
   z-index: 1;
+}
+
+/* Dark mode adjustment */
+.dark-mode .consultation-section::before {
+  background: rgba(26, 26, 26, 0.8);
 }
 
 /* Ensure content appears above overlay */
@@ -463,6 +502,12 @@
   padding: 2.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .approach-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
 }
 
 .approach-card h3 {
@@ -508,17 +553,28 @@
   margin-bottom: 0;
 }
 
-/* Services CTA */
+/* Services CTA - Fixed Dark Mode Contrast */
 .services-cta {
   background: var(--text-dark);
   color: white;
   text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .services-cta {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: var(--text-dark);
 }
 
 .services-cta h2 {
   color: white;
   font-size: 2.5rem;
   margin-bottom: 1rem;
+}
+
+.dark-mode .services-cta h2 {
+  color: var(--text-dark);
+  font-weight: 700;
 }
 
 .services-cta p {
@@ -531,6 +587,11 @@
   line-height: 1.6;
 }
 
+.dark-mode .services-cta p {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
 .cta-buttons {
   display: flex;
   gap: 1rem;
@@ -541,11 +602,23 @@
 .services-cta .btn-primary {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
+  color: white;
 }
 
 .services-cta .btn-primary:hover {
   background: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+.dark-mode .services-cta .btn-primary {
+  background: var(--text-dark);
+  border-color: var(--text-dark);
+  color: white;
+}
+
+.dark-mode .services-cta .btn-primary:hover {
+  background: rgba(44, 62, 80, 0.8);
+  border-color: rgba(44, 62, 80, 0.8);
 }
 
 .services-cta .btn-secondary {
@@ -557,6 +630,18 @@
 .services-cta .btn-secondary:hover {
   background: white;
   color: var(--text-dark);
+}
+
+.dark-mode .services-cta .btn-secondary {
+  background: transparent;
+  color: var(--text-dark);
+  border-color: var(--text-dark);
+  font-weight: 600;
+}
+
+.dark-mode .services-cta .btn-secondary:hover {
+  background: var(--text-dark);
+  color: white;
 }
 
 /* Global Level Test Button Styling */

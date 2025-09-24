@@ -40,7 +40,7 @@ const Pricing = () => {
       ],
       packages: [
         { lessons: '1 Month Course', price: 'from £240', savings: 'Small discount' },
-        { lessons: '3 Month Course', price: 'from £342', savings: 'Better discount' },
+        { lessons: '3 Month Course', price: 'from £114/month', savings: 'Better discount' },
         { lessons: '9 Month Course', price: '£972', savings: 'Best discount' }
       ],
       popular: true
@@ -50,7 +50,7 @@ const Pricing = () => {
   const courseDurations = [
     {
       duration: '1 Month',
-      mascot: '/images/Mascots/Cream happy.png', // Energetic ferret for quick courses
+      mascot: '/images/Mascots/Cream happy.png',
       mascotAlt: 'Cream the ferret mascot',
       description: 'Quick projects or intensive exam preparation',
       pricing: '£240',
@@ -61,23 +61,25 @@ const Pricing = () => {
     },
     {
       duration: '3 Months',
-      mascot: '/images/Mascots/Nutmeg curious.png', // Main cat mascot for most popular option
+      mascot: '/images/Mascots/Nutmeg curious.png',
       mascotAlt: 'Nutmeg the cat mascot',
-      description: 'Semi-intensive courses',
-      pricing: 'From £342',
-      pricingNote: '5% discount',
+      description: 'Intensive or standard pace',
+      pricing: 'From £114/month',
+      pricingNote: 'Standard pace',
+      additionalPricing: 'From £228/month',
+      additionalNote: 'Intensive pace',
       originalPrice: 'From £360',
       hours: 'Choose your pace: 3hrs/week (standard) or 6hrs/week (intensive)',
       features: [
         'Available as standard or intensive',
-        '5% discount on hourly rate',
+        'Monthly payment option',
         'Ideal for more in-depth skill development'
       ],
       popular: true
     },
     {
       duration: '9 Months',
-      mascot: '/images/Mascots/Sundae happy.png', // Loyal dog for long-term commitment
+      mascot: '/images/Mascots/Sundae happy.png',
       mascotAlt: 'Sundae the dog mascot',
       description: 'Academic Year Course',
       pricing: '£972',
@@ -115,7 +117,7 @@ const Pricing = () => {
       service: 'Student Portal Access',
       price: 'Included',
       description: 'Private area for course materials and resources',
-      icon: '🔐'
+      icon: '🔒'
     }
   ];
 
@@ -161,65 +163,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* Course Durations with Mascots */}
-        <section className="course-durations-with-mascots section">
-          <div className="container">
-            <motion.div
-                className="section-title"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-            >
-              <h2>Course Lengths with Mascots</h2>
-              <p>Choose your ideal course duration - each with its own friendly mascot guide!</p>
-            </motion.div>
-            <div className="mascot-courses-grid">
-              {courseDurations.map((course, index) => (
-                  <motion.div
-                      key={index}
-                      className={`mascot-course-card ${course.popular ? 'most-popular' : ''}`}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.2 }}
-                  >
-                    {course.popular && <div className="popular-badge">Most Popular</div>}
-
-                    <div className="mascot-header">
-                      <div className="mascot-image">
-                        <img src={course.mascot} alt={course.mascotAlt} />
-                      </div>
-                      <h3>{course.duration}</h3>
-                      <p className="course-type">{course.description}</p>
-                    </div>
-
-                    <div className="pricing-display">
-                      {course.originalPrice && (
-                          <div className="original-price">From £360</div>
-                      )}
-                      <div className="current-price">
-                        <span className="price">{course.pricing}</span>
-                        <span className="pricing-note">{course.pricingNote}</span>
-                      </div>
-                      <p className="hours-info">{course.hours}</p>
-                    </div>
-
-                    <div className="course-features">
-                      <h4>Course Features:</h4>
-                      <ul>
-                        {course.features.map((feature, idx) => (
-                            <li key={idx}>{feature}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Main Pricing Plans */}
+        {/* Choose Your Learning Format - NOW FIRST */}
         <section className="pricing-plans section bg-light">
           <div className="container">
             <div className="section-title">
@@ -283,8 +227,72 @@ const Pricing = () => {
           </div>
         </section>
 
+        {/* Group Course Lengths with Mascots - NOW SECOND */}
+        <section className="course-durations-with-mascots section">
+          <div className="container">
+            <motion.div
+                className="section-title"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+            >
+              <h2>Group Course Lengths</h2>
+              <p>Choose your ideal course duration for group classes - each with its own friendly mascot guide!</p>
+            </motion.div>
+            <div className="mascot-courses-grid">
+              {courseDurations.map((course, index) => (
+                  <motion.div
+                      key={index}
+                      className={`mascot-course-card ${course.popular ? 'most-popular' : ''}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.2 }}
+                  >
+                    {course.popular && <div className="popular-badge">Most Popular</div>}
+
+                    <div className="mascot-header">
+                      <div className="mascot-image">
+                        <img src={course.mascot} alt={course.mascotAlt} />
+                      </div>
+                      <h3>{course.duration}</h3>
+                      <p className="course-type">{course.description}</p>
+                    </div>
+
+                    <div className="pricing-display">
+                      {course.originalPrice && (
+                          <div className="original-price">From £360</div>
+                      )}
+                      <div className="current-price">
+                        <span className="price">{course.pricing}</span>
+                        <span className="pricing-note">{course.pricingNote}</span>
+                      </div>
+                      {course.additionalPricing && (
+                          <div className="current-price">
+                            <span className="price">{course.additionalPricing}</span>
+                            <span className="pricing-note">{course.additionalNote}</span>
+                          </div>
+                      )}
+                      <p className="hours-info">{course.hours}</p>
+                    </div>
+
+                    <div className="course-features">
+                      <h4>Course Features:</h4>
+                      <ul>
+                        {course.features.map((feature, idx) => (
+                            <li key={idx}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Additional Services */}
-        <section className="additional-services section">
+        <section className="additional-services section bg-light">
           <div className="container">
             <motion.div
                 className="section-title"
@@ -317,7 +325,7 @@ const Pricing = () => {
         </section>
 
         {/* Payment Information */}
-        <section className="payment-info section bg-light">
+        <section className="payment-info section">
           <div className="container">
             <div className="payment-content">
               <motion.div
@@ -335,7 +343,7 @@ const Pricing = () => {
                   </div>
                   <div className="payment-item">
                     <h4>📅 Payment Policy</h4>
-                    <p>Payment in advance secures your slot in my timetable and guarantees your preferred times</p>
+                    <p>Payment in advance secures your slot in my timetable and guarantees your preferred times. 3-month group courses can be paid monthly for your convenience.</p>
                   </div>
                   <div className="payment-item">
                     <h4>🔄 Cancellation Policy</h4>

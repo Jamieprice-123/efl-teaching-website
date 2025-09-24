@@ -116,18 +116,24 @@ const Services = () => {
   const courseDurations = [
     {
       duration: '1 Month',
+      mascot: '/images/Mascots/Cream happy.png',
+      mascotAlt: 'Cream the ferret mascot',
       type: 'Quick Projects & Intensive Prep',
       description: 'Perfect for short-term goals or intensive exam preparation',
       benefits: ['Small discount on hourly rate', 'Focused learning objectives', 'Quick results']
     },
     {
       duration: '3 Months',
-      type: 'Semi-Intensive Courses',
+      mascot: '/images/Mascots/Nutmeg curious.png',
+      mascotAlt: 'Nutmeg the cat mascot',
+      type: 'Intensive or Standard Pace',
       description: 'Ideal for quick level progression or mid-length projects',
       benefits: ['Better discount on hourly rate', 'Comprehensive skill development', 'Structured progression']
     },
     {
       duration: '9 Months',
+      mascot: '/images/Mascots/Sundae happy.png',
+      mascotAlt: 'Sundae the dog mascot',
       type: 'Academic Year Courses',
       description: 'Complete language learning journey with maximum support',
       benefits: ['Best discount rates', 'Guaranteed timetable spot', 'Long-term progression tracking']
@@ -232,6 +238,22 @@ const Services = () => {
                       transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
                     <div className="duration-header">
+                      <div className="mascot-image">
+                        <img
+                            src={course.mascot}
+                            alt={course.mascotAlt}
+                            style={{
+                              width: '80px',
+                              height: '80px',
+                              objectFit: 'contain',
+                              marginBottom: '1rem'
+                            }}
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              e.target.parentElement.innerHTML = '<div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-bottom: 1rem;">📚</div>';
+                            }}
+                        />
+                      </div>
                       <h3>{course.duration}</h3>
                       <h4>{course.type}</h4>
                     </div>
@@ -333,7 +355,7 @@ const Services = () => {
                     <p>Novels, podcasts, series, and YouTube videos for project courses</p>
                   </div>
                   <div className="material-item">
-                    <h4>🔐 Private Student Area</h4>
+                    <h4>🔒 Private Student Area</h4>
                     <p>Access course materials, notes, and resources in your secure student portal</p>
                   </div>
                 </div>

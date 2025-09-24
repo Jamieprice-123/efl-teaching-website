@@ -78,7 +78,20 @@ const About = () => {
                             transition={{ duration: 0.8, delay: 0.3 }}
                         >
                             <div className="image-placeholder">
-                                <span>Professional Photo of Rose</span>
+                                <img
+                                    src="/images/Rose.jpg"
+                                    alt="Rose Scott - English Teacher"
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        borderRadius: '50%'
+                                    }}
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.parentElement.innerHTML = '<span>Professional Photo of Rose</span>';
+                                    }}
+                                />
                             </div>
                         </motion.div>
                     </div>
