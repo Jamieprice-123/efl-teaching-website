@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import './Blog.css';
+import './TeachingMaterials.css';
 
-const Blog = () => {
-    const blogPosts = [
+const TeachingMaterials = () => {
+    const materials = [
         {
             id: 1,
             title: 'The Power of Interest-Based Learning in English',
@@ -73,29 +73,29 @@ const Blog = () => {
 
     const [selectedCategory, setSelectedCategory] = React.useState('All Posts');
 
-    const filteredPosts = selectedCategory === 'All Posts'
-        ? blogPosts
-        : blogPosts.filter(post => post.category === selectedCategory);
+    const filteredMaterials = selectedCategory === 'All Posts'
+        ? materials
+        : materials.filter(material => material.category === selectedCategory);
 
-    const featuredPosts = blogPosts.filter(post => post.featured);
+    const featuredMaterials = materials.filter(material => material.featured);
 
     return (
-        <div className="blog">
+        <div className="teaching-materials">
             {/* Hero Section */}
-            <section className="blog-hero">
+            <section className="materials-hero">
                 <div className="container">
                     <motion.div
-                        className="blog-hero-content"
+                        className="materials-hero-content"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1>English Learning Blog</h1>
-                        <p className="blog-subtitle">
-                            Tips, strategies, and insights from 12 years of English teaching experience
+                        <h1>Teaching Materials & Resources</h1>
+                        <p className="materials-subtitle">
+                            Tips, strategies, and insights from teaching experience since 2013
                         </p>
-                        <p className="blog-description">
-                            Welcome to my blog! Here I share practical advice, teaching insights, and learning
+                        <p className="materials-description">
+                            Welcome to my teaching materials section! Here I share practical advice, teaching insights, and learning
                             strategies to help you on your English journey. From grammar tips to cultural insights,
                             find resources to support your language learning goals.
                         </p>
@@ -103,8 +103,8 @@ const Blog = () => {
                 </div>
             </section>
 
-            {/* Featured Posts */}
-            <section className="featured-posts section">
+            {/* Featured Materials */}
+            <section className="featured-materials section">
                 <div className="container">
                     <motion.div
                         className="section-title"
@@ -113,34 +113,34 @@ const Blog = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2>Featured Articles</h2>
-                        <p>Don't miss these popular posts from my teaching experience</p>
+                        <h2>Featured Resources</h2>
+                        <p>Don't miss these popular materials from my teaching experience</p>
                     </motion.div>
                     <div className="featured-grid">
-                        {featuredPosts.map((post, index) => (
+                        {featuredMaterials.map((material, index) => (
                             <motion.article
-                                key={post.id}
-                                className="featured-post-card"
+                                key={material.id}
+                                className="featured-material-card"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.2 }}
                             >
-                                <div className="post-image">
+                                <div className="material-image">
                                     <div className="image-placeholder">
-                                        📚 Blog Post Image
+                                        📚 Teaching Material
                                     </div>
                                     <span className="featured-badge">Featured</span>
                                 </div>
-                                <div className="post-content">
-                                    <div className="post-meta">
-                                        <span className="post-category">{post.category}</span>
-                                        <span className="post-date">{new Date(post.date).toLocaleDateString()}</span>
-                                        <span className="post-read-time">{post.readTime}</span>
+                                <div className="material-content">
+                                    <div className="material-meta">
+                                        <span className="material-category">{material.category}</span>
+                                        <span className="material-date">{new Date(material.date).toLocaleDateString()}</span>
+                                        <span className="material-read-time">{material.readTime}</span>
                                     </div>
-                                    <h3>{post.title}</h3>
-                                    <p>{post.excerpt}</p>
-                                    <Link to={`/blog/${post.id}`} className="read-more-link">
+                                    <h3>{material.title}</h3>
+                                    <p>{material.excerpt}</p>
+                                    <Link to={`/teaching-materials/${material.id}`} className="read-more-link">
                                         Read More →
                                     </Link>
                                 </div>
@@ -150,8 +150,8 @@ const Blog = () => {
                 </div>
             </section>
 
-            {/* Blog Posts */}
-            <section className="blog-posts section bg-light">
+            {/* All Materials */}
+            <section className="materials-posts section bg-light">
                 <div className="container">
                     {/* Category Filter */}
                     <motion.div
@@ -175,31 +175,31 @@ const Blog = () => {
                         </div>
                     </motion.div>
 
-                    {/* Posts Grid */}
-                    <div className="posts-grid">
-                        {filteredPosts.map((post, index) => (
+                    {/* Materials Grid */}
+                    <div className="materials-grid">
+                        {filteredMaterials.map((material, index) => (
                             <motion.article
-                                key={post.id}
-                                className="post-card"
+                                key={material.id}
+                                className="material-card"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
                             >
-                                <div className="post-image">
+                                <div className="material-image">
                                     <div className="image-placeholder">
                                         📖 Article Image
                                     </div>
                                 </div>
-                                <div className="post-content">
-                                    <div className="post-meta">
-                                        <span className="post-category">{post.category}</span>
-                                        <span className="post-date">{new Date(post.date).toLocaleDateString()}</span>
-                                        <span className="post-read-time">{post.readTime}</span>
+                                <div className="material-content">
+                                    <div className="material-meta">
+                                        <span className="material-category">{material.category}</span>
+                                        <span className="material-date">{new Date(material.date).toLocaleDateString()}</span>
+                                        <span className="material-read-time">{material.readTime}</span>
                                     </div>
-                                    <h4>{post.title}</h4>
-                                    <p>{post.excerpt}</p>
-                                    <Link to={`/blog/${post.id}`} className="read-more-link">
+                                    <h4>{material.title}</h4>
+                                    <p>{material.excerpt}</p>
+                                    <Link to={`/teaching-materials/${material.id}`} className="read-more-link">
                                         Read Article →
                                     </Link>
                                 </div>
@@ -209,8 +209,8 @@ const Blog = () => {
                 </div>
             </section>
 
-            {/* Blog CTA */}
-            <section className="blog-cta section">
+            {/* Materials CTA */}
+            <section className="materials-cta section">
                 <div className="container">
                     <motion.div
                         className="cta-content"
@@ -221,7 +221,7 @@ const Blog = () => {
                     >
                         <h2>Want Personalized English Learning?</h2>
                         <p>
-                            While these blog posts provide general guidance, nothing beats personalized instruction
+                            While these materials provide general guidance, nothing beats personalized instruction
                             tailored to your specific goals and interests. Let's work together to create your
                             perfect English learning plan.
                         </p>
@@ -230,7 +230,7 @@ const Blog = () => {
                                 Book Free Consultation
                             </Link>
                             <Link to="/services" className="btn btn-secondary">
-                                View Services
+                                View Course Types
                             </Link>
                         </div>
                     </motion.div>
@@ -247,9 +247,9 @@ const Blog = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h3>🚀 Blog Coming Soon!</h3>
+                        <h3>🚀 More Materials Coming Soon!</h3>
                         <p>
-                            I'm currently working on creating valuable content for this blog. In the meantime,
+                            I'm currently working on creating valuable content for this section. In the meantime,
                             you can find my quick English tips and mini-lessons on Instagram
                             <a href="https://instagram.com/iamenglishteacherrose" target="_blank" rel="noopener noreferrer"> @iamenglishteacherrose</a>.
                         </p>
@@ -264,4 +264,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default TeachingMaterials;

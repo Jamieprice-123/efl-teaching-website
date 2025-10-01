@@ -26,11 +26,9 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real application, you would send this data to your backend
     console.log('Form submitted:', formData);
     setIsSubmitted(true);
 
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -77,29 +75,34 @@ const Contact = () => {
   const processSteps = [
     {
       step: '1',
-      title: 'Submit Your Information',
-      description: 'Fill out the contact form with your goals and availability'
+      title: 'Take Level Test',
+      description: 'Complete the free online level test to assess your grammar and vocabulary'
     },
     {
       step: '2',
-      title: 'Free Consultation',
-      description: '20-minute video call to assess your level and discuss your needs'
+      title: 'Submit Contact Form',
+      description: 'Fill out the contact form with your goals and availability'
     },
     {
       step: '3',
-      title: 'Personalized Plan',
-      description: 'Receive a customized learning plan and course recommendations'
+      title: 'Complete Needs Assessment',
+      description: "You'll receive a needs assessment questionnaire to complete before your consultation"
     },
     {
       step: '4',
+      title: 'Free Consultation',
+      description: '20-minute video call to assess your spoken level and discuss your needs'
+    },
+    {
+      step: '5',
       title: 'Start Learning',
-      description: 'Begin your English learning journey with confidence'
+      description: 'Begin your English learning journey with a personalized plan'
     }
   ];
 
   return (
       <div className="contact">
-        {/* Hero Section */}
+        {/* HERO */}
         <section className="contact-hero">
           <div className="container">
             <motion.div
@@ -131,11 +134,10 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Contact Form and Info */}
+        {/* CONTACT FORM */}
         <section className="contact-main section">
           <div className="container">
             <div className="contact-content">
-              {/* Contact Form */}
               <motion.div
                   className="contact-form-section"
                   initial={{ opacity: 0, x: -50 }}
@@ -170,9 +172,13 @@ const Contact = () => {
                       <div className="success-icon">✅</div>
                       <h3>Thank You!</h3>
                       <p>Your message has been sent successfully. I'll get back to you within 24 hours to schedule your free consultation.</p>
+                      <p style={{ marginTop: '1rem', fontSize: '0.95rem', color: 'var(--text-light)' }}>
+                        Next step: You'll receive a link to the Needs Assessment questionnaire via email.
+                      </p>
                     </div>
                 ) : (
                     <form className="contact-form" onSubmit={handleSubmit}>
+                      {/* NAME & EMAIL */}
                       <div className="form-row">
                         <div className="form-group">
                           <label htmlFor="name" className="form-label">Full Name *</label>
@@ -202,6 +208,7 @@ const Contact = () => {
                         </div>
                       </div>
 
+                      {/* ENGLISH LEVEL & INTEREST */}
                       <div className="form-row">
                         <div className="form-group">
                           <label htmlFor="englishLevel" className="form-label">Current English Level</label>
@@ -219,11 +226,11 @@ const Contact = () => {
                             <option value="B2">B2 - Upper Intermediate</option>
                             <option value="C1">C1 - Advanced</option>
                             <option value="C2">C2 - Proficiency</option>
-                            <option value="unsure">Not sure</option>
+                            <option value="unsure">Not sure - I took the level test</option>
                           </select>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="serviceInterest" className="form-label">Service Interest</label>
+                          <label htmlFor="serviceInterest" className="form-label">Course Interest</label>
                           <select
                               id="serviceInterest"
                               name="serviceInterest"
@@ -231,7 +238,7 @@ const Contact = () => {
                               onChange={handleChange}
                               className="form-select"
                           >
-                            <option value="">Select a service</option>
+                            <option value="">Select a course type</option>
                             <option value="one-on-one">One-on-One Lessons</option>
                             <option value="group">Group Classes</option>
                             <option value="textbook">Textbook Courses</option>
@@ -244,7 +251,7 @@ const Contact = () => {
                         </div>
                       </div>
 
-                      {/* Conditional fields based on service selection */}
+                      {/* CONDITIONAL FIELDS */}
                       {formData.serviceInterest === 'exam-prep' && (
                           <div className="form-group">
                             <label htmlFor="examType" className="form-label">Exam Type</label>
@@ -283,6 +290,7 @@ const Contact = () => {
                           </div>
                       )}
 
+                      {/* GOALS */}
                       <div className="form-group">
                         <label htmlFor="goals" className="form-label">Learning Goals</label>
                         <textarea
@@ -296,6 +304,7 @@ const Contact = () => {
                         />
                       </div>
 
+                      {/* AVAILABILITY */}
                       <div className="form-group">
                         <label htmlFor="availability" className="form-label">Availability</label>
                         <textarea
@@ -309,6 +318,7 @@ const Contact = () => {
                         />
                       </div>
 
+                      {/* MESSAGE */}
                       <div className="form-group">
                         <label htmlFor="message" className="form-label">Additional Message</label>
                         <textarea
@@ -329,7 +339,7 @@ const Contact = () => {
                 )}
               </motion.div>
 
-              {/* Contact Information */}
+              {/* CONTACT INFO */}
               <motion.div
                   className="contact-info-section"
                   initial={{ opacity: 0, x: 50 }}
@@ -370,7 +380,7 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Process Steps */}
+        {/* PROCESS STEPS */}
         <section className="process-steps section bg-light">
           <div className="container">
             <motion.div
@@ -381,7 +391,7 @@ const Contact = () => {
                 transition={{ duration: 0.6 }}
             >
               <h2>How It Works</h2>
-              <p>Your journey to better English starts with a simple conversation</p>
+              <p>Your journey to better English starts with a simple process</p>
             </motion.div>
             <div className="steps-grid">
               {processSteps.map((step, index) => (
@@ -402,36 +412,113 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="contact-faq section">
+        {/* TIMETABLE */}
+        <section className="timetable-section section">
           <div className="container">
             <motion.div
-                className="faq-content"
+                className="section-title"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+            >
+              <h2>My Teaching Timetable</h2>
+              <p>View my current availability and course schedule</p>
+            </motion.div>
+            <motion.div
+                className="timetable-embed"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
             >
-              <h2>Frequently Asked Questions</h2>
-              <div className="faq-grid">
-                <div className="faq-item">
-                  <h4>How long is the free consultation?</h4>
-                  <p>The consultation lasts 20 minutes and includes a speaking assessment and discussion of your goals.</p>
+              <iframe
+                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQIyjzPuDH074zYyl2TqdY87GOx6fp2pZcUP2KT02Ms5PbuT9yyjuy-WWzzMz5Ns2vkhO812RYUVRSh/pubhtml?gid=1477582036&single=true&widget=true&headers=false"
+                  title="Rose's Teaching Timetable"
+                  className="timetable-iframe"
+              ></iframe>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* NEEDS ASSESSMENT */}
+        <section className="needs-assessment-info section bg-light">
+          <div className="container">
+            <motion.div
+                className="assessment-content"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+            >
+              <h2>📋 What Happens After You Contact Me?</h2>
+              <div className="assessment-steps">
+                <div className="assessment-step">
+                  <div className="step-icon">1️⃣</div>
+                  <div className="step-content">
+                    <h3>I'll Respond Within 24 Hours</h3>
+                    <p>You'll receive a confirmation email with next steps and a link to the Needs Assessment.</p>
+                  </div>
                 </div>
-                <div className="faq-item">
-                  <h4>What do I need for online lessons?</h4>
-                  <p>Just a computer or tablet with internet connection, camera, and microphone. I'll handle the rest!</p>
+                <div className="assessment-step">
+                  <div className="step-icon">2️⃣</div>
+                  <div className="step-content">
+                    <h3>Complete the Needs Assessment</h3>
+                    <p>A short questionnaire to help me understand your learning needs better before our consultation.</p>
+                    <a
+                        href="https://forms.gle/8avcCJmQgY9n7P2V9"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary btn-small"
+                        style={{ marginTop: '1rem' }}
+                    >
+                      Preview Needs Assessment
+                    </a>
+                  </div>
                 </div>
-                <div className="faq-item">
-                  <h4>Can I try a lesson before committing?</h4>
-                  <p>Absolutely! The free consultation gives you a taste of my teaching style before you decide.</p>
-                </div>
-                <div className="faq-item">
-                  <h4>Do you teach complete beginners?</h4>
-                  <p>Yes! I teach all levels from A1 (beginner) to C2 (proficiency) and adapt my methods accordingly.</p>
+                <div className="assessment-step">
+                  <div className="step-icon">3️⃣</div>
+                  <div className="step-content">
+                    <h3>Schedule Your Free Consultation</h3>
+                    <p>We'll arrange a 20-minute video call to discuss your goals and create your personalized learning plan.</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="contact-faq section">
+          <div className="container">
+            <motion.div
+                className="section-title"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+            >
+              <h2>Frequently Asked Questions</h2>
+              <p>Find answers to common questions about my teaching process</p>
+            </motion.div>
+            <div className="faq-grid">
+              <div className="faq-item">
+                <h4>Do I need to take the level test before contacting you?</h4>
+                <p>It's highly recommended! The level test helps me understand your current grammar and vocabulary level before our consultation, but it's not mandatory.</p>
+              </div>
+              <div className="faq-item">
+                <h4>What happens during the free consultation?</h4>
+                <p>We'll have a 20-minute video call where I'll assess your spoken English, discuss your goals, and recommend the best course options for you.</p>
+              </div>
+              <div className="faq-item">
+                <h4>Is there any commitment after the consultation?</h4>
+                <p>No, the consultation is completely free with no obligation. You can decide afterward if you'd like to continue with lessons.</p>
+              </div>
+              <div className="faq-item">
+                <h4>How do I pay for lessons if I decide to continue?</h4>
+                <p>Payment information will be provided after the consultation. I offer flexible payment options to suit your needs.</p>
+              </div>
+            </div>
           </div>
         </section>
       </div>

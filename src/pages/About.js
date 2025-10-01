@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useAdmin } from '../context/AdminContext';
 import './About.css';
 
 const About = () => {
+    const { content } = useAdmin();
+
     const qualifications = [
         {
             title: 'CELTA Certificate',
@@ -21,8 +24,8 @@ const About = () => {
             icon: '🎓'
         },
         {
-            title: '12+ Years Experience',
-            description: 'Teaching students from ages 6 to 66',
+            title: 'Teaching Experience Since 2013',
+            description: 'Teaching students of all ages at every age & level',
             icon: '⭐'
         }
     ];
@@ -60,12 +63,10 @@ const About = () => {
                         >
                             <h1>Meet Rose</h1>
                             <p className="about-subtitle">
-                                Your dedicated English teacher with a passion for holistic language learning and classroom experience since 2013
+                                Your dedicated English teacher with a passion for holistic language learning and teaching experience since 2013
                             </p>
                             <p className="about-description">
-                                Hello! I'm Rosamund Scott, but you can call me Rose. I'm from Northern Ireland and I have over ten years of experience
-                                teaching in language schools in Spain, as well as a year working as a self-employed teacher in Barcelona. In 2025, I moved to England,
-                                and now I have my own website! I am very excited to be able to offer group courses now, thanks to this.
+                                {content.about.intro}
                             </p>
                             <div className="about-location">
                                 📍 Based in England, UK • Teaching online worldwide
@@ -98,7 +99,7 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Teaching Philosophy */}
+            {/* What Makes My Teaching Different */}
             <section className="teaching-philosophy section">
                 <div className="container">
                     <motion.div
@@ -108,15 +109,13 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2>My Teaching Philosophy</h2>
+                        <h2>What Makes My Teaching Different?</h2>
                         <div className="philosophy-grid">
                             <div className="philosophy-card">
                                 <div className="philosophy-icon">🎯</div>
                                 <h3>Interest-Based Learning</h3>
                                 <p>
-                                    I tap into my students' interests to create an inclusive, relaxed class environment
-                                    that promotes learning. Whether you love books, podcasts, or TV series, we'll use
-                                    what you enjoy to improve your English.
+                                    {content.about.philosophy}
                                 </p>
                             </div>
                             <div className="philosophy-card">
@@ -187,26 +186,26 @@ const About = () => {
                         >
                             <h2>Teaching Experience</h2>
                             <p className="experience-intro">
-                                Over the past 12 years, I've had the privilege of teaching students from diverse backgrounds
+                                Since 2013, I've had the privilege of teaching students from diverse backgrounds
                                 and helping them achieve their English learning goals.
                             </p>
                             <div className="experience-highlights">
                                 <div className="highlight">
-                                    <h4>🌹 International Experience</h4>
+                                    <h4>🌍 International Experience</h4>
                                     <p>
                                         During my time teaching in Spain, I taught speakers of Spanish, Catalan, Galician, Portuguese and French.
                                         Now, I'm excited to expand my reach to students worldwide!
                                     </p>
                                 </div>
                                 <div className="highlight">
-                                    <h4>🌹 All Ages & Levels</h4>
+                                    <h4>🌍 All Ages & Levels</h4>
                                     <p>
-                                        From 6-year-olds just starting their English journey to 66-year-olds perfecting
-                                        their skills, I've taught students at every level from A1 beginner to C2 proficiency.
+                                        From students just starting their English journey to those perfecting
+                                        their skills, I've taught students of all ages at every level from A1 beginner to C2 proficiency.
                                     </p>
                                 </div>
                                 <div className="highlight">
-                                    <h4>🌹 Specialized Expertise</h4>
+                                    <h4>🌍 Specialized Expertise</h4>
                                     <p>
                                         Extensive experience with exam preparation, especially Cambridge exams,
                                         plus my unique 'project courses' that use books, podcasts, and series
@@ -246,8 +245,8 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2>What Makes Me Different</h2>
-                        <p>My unique approach to English teaching that you won't find elsewhere</p>
+                        <h2>My Unique Approach</h2>
+                        <p>Project courses - something you won't find elsewhere</p>
                     </motion.div>
                     <motion.div
                         className="usp-content"
@@ -287,39 +286,6 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Additional Teaching Approach Section */}
-            <section className="teaching-approach section">
-                <div className="container">
-                    <motion.div
-                        className="approach-content"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <h2>What Makes My Teaching Different?</h2>
-                        <div className="approach-features">
-                            <div className="feature">
-                                <h4>🌹 Interest-Based Learning</h4>
-                                <p>I tap into your interests to create an inclusive, relaxed class environment that promotes natural learning.</p>
-                            </div>
-                            <div className="feature">
-                                <h4>🌹 Maximized Student Talk Time</h4>
-                                <p>My classes focus on getting you speaking and using English actively to consolidate your learning.</p>
-                            </div>
-                            <div className="feature">
-                                <h4>🌹 Unique Project Courses</h4>
-                                <p>Study specific books, podcasts, or series as a vehicle for practicing English - something you won't find elsewhere!</p>
-                            </div>
-                            <div className="feature">
-                                <h4>🌹 Teaching Experience since 2013</h4>
-                                <p>From teaching students aged 6 to 66, I understand how to adapt my methods to different learning styles.</p>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
             {/* Call to Action */}
             <section className="about-cta section">
                 <div className="container">
@@ -341,7 +307,7 @@ const About = () => {
                                 Book Free Consultation
                             </Link>
                             <Link to="/services" className="btn btn-secondary">
-                                Explore My Services
+                                Explore My Classes
                             </Link>
                         </div>
                     </motion.div>

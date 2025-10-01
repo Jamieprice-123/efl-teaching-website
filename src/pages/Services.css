@@ -842,6 +842,140 @@
   }
 }
 
+/* Format Note */
+.format-note {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: rgba(129, 212, 227, 0.1);
+  border-radius: var(--border-radius);
+}
+
+.dark-mode .format-note {
+  background: rgba(91, 192, 222, 0.15);
+}
+
+.format-note p {
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Learning Format Section */
+.learning-format {
+  padding: 80px 0;
+}
+
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.format-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+  border: 3px solid transparent;
+}
+
+.dark-mode .format-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.format-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-color);
+}
+
+.dark-mode .format-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.format-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.format-card h3 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.format-description {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.format-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  text-align: left;
+}
+
+.format-features li {
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.format-features li::before {
+  content: '✓';
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.format-duration {
+  padding-top: 1.5rem;
+  border-top: 2px solid #F0F0F0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.dark-mode .format-duration {
+  border-top-color: var(--border-color);
+}
+
+.format-duration strong {
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .format-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .format-card {
+    padding: 2rem;
+  }
+
+  .format-icon {
+    font-size: 3rem;
+    height: 80px;
+  }
+}
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .consultation-section::before {
@@ -870,3 +1004,4 @@
     text-shadow: none;
   }
 }
+

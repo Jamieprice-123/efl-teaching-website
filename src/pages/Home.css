@@ -134,6 +134,17 @@
   margin-top: 3rem;
 }
 
+.format-note {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.format-note p {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
 .service-card {
   background: white;
   border-radius: var(--border-radius);

@@ -6,6 +6,7 @@ import './Navbar.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showClassesDropdown, setShowClassesDropdown] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setIsOpen(false);
+    setShowClassesDropdown(false);
   };
 
   const isActive = (path) => location.pathname === path;
@@ -48,20 +50,31 @@ const Navbar = () => {
             >
               About
             </Link>
-            <Link
-                to="/services"
-                className={`navbar-link ${isActive('/services') ? 'active' : ''}`}
-                onClick={closeMenu}
+
+            {/* My Classes Dropdown */}
+            <div
+                className="navbar-dropdown"
+                onMouseEnter={() => setShowClassesDropdown(true)}
+                onMouseLeave={() => setShowClassesDropdown(false)}
             >
-              Services
-            </Link>
-            <Link
-                to="/pricing"
-                className={`navbar-link ${isActive('/pricing') ? 'active' : ''}`}
-                onClick={closeMenu}
-            >
-              Pricing
-            </Link>
+              <Link
+                  to="/services"
+                  className={`navbar-link ${isActive('/services') || isActive('/pricing') ? 'active' : ''}`}
+                  onClick={closeMenu}
+              >
+                My Classes
+                <span className="dropdown-arrow">▼</span>
+              </Link>
+              <div className={`dropdown-menu ${showClassesDropdown ? 'show' : ''}`}>
+                <Link to="/services" className="dropdown-item" onClick={closeMenu}>
+                  Course Types
+                </Link>
+                <Link to="/pricing" className="dropdown-item" onClick={closeMenu}>
+                  Pricing
+                </Link>
+              </div>
+            </div>
+
             <Link
                 to="/testimonials"
                 className={`navbar-link ${isActive('/testimonials') ? 'active' : ''}`}
@@ -70,11 +83,11 @@ const Navbar = () => {
               Testimonials
             </Link>
             <Link
-                to="/blog"
-                className={`navbar-link ${isActive('/blog') ? 'active' : ''}`}
+                to="/teaching-materials"
+                className={`navbar-link ${isActive('/teaching-materials') ? 'active' : ''}`}
                 onClick={closeMenu}
             >
-              Blog
+              Teaching Materials
             </Link>
             <Link
                 to="/faq"

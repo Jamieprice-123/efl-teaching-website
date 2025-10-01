@@ -14,7 +14,7 @@ This website showcases Rose's 12 years of English teaching experience, CELTA cer
 - **Services**: Comprehensive breakdown of all teaching services offered
 - **Pricing**: Transparent pricing structure with package deals
 - **Testimonials**: Student reviews and success stories
-- **Blog**: English learning tips and educational content
+- **TeachingMaterials**: English learning tips and educational content
 - **FAQ**: Common questions and detailed answers
 - **Contact**: Professional contact form with consultation booking
 
@@ -96,7 +96,7 @@ efl-teaching-website/
 │   │   ├── Services.js & Services.css   # Teaching services
 │   │   ├── Pricing.js & Pricing.css     # Pricing structure
 │   │   ├── Testimonials.js              # Student reviews
-│   │   ├── Blog.js                      # Learning resources
+│   │   ├── TeachingMaterials.js                      # Learning resources
 │   │   ├── FAQ.js                       # Common questions
 │   │   └── Contact.js & Contact.css     # Contact form
 │   ├── App.js              # Main app with routing
@@ -169,7 +169,7 @@ The website integrates all details from Rose's questionnaire:
 ## 🔧 Customization Guide
 
 ### Adding New Content
-1. **Blog Posts**: Add to Blog.js component
+1. **TeachingMaterials Posts**: Add to TeachingMaterials.js component
 2. **Testimonials**: Update testimonials array in Home.js and Testimonials.js
 3. **Services**: Modify services arrays in relevant components
 4. **Contact Info**: Update contact details in Contact.js and Footer.js
