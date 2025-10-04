@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { DarkModeProvider } from './context/DarkModeContext';
@@ -18,39 +19,39 @@ import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
 function App() {
-  return (
-      <AdminProvider>
-        <DarkModeProvider>
-          <Router>
-            <div className="App">
-              <Navbar />
-              <main>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/testimonials" element={<Testimonials />} />
-                  <Route path="/teaching-materials" element={<TeachingMaterials />} />
-                  <Route path="/faq" element={<FAQ />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/admin/login" element={<AdminLogin />} />
-                  <Route
-                      path="/admin/dashboard"
-                      element={
-                        <ProtectedRoute>
-                          <AdminDashboard />
-                        </ProtectedRoute>
-                      }
-                  />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          </Router>
-        </DarkModeProvider>
-      </AdminProvider>
-  );
+    return (
+        <AdminProvider>
+            <DarkModeProvider>
+                <Router>
+                    <div className="App">
+                        <Navbar />
+                        <main>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/about" element={<About />} />
+                                <Route path="/my-classes" element={<Services />} />
+                                <Route path="/pricing" element={<Pricing />} />
+                                <Route path="/testimonials" element={<Testimonials />} />
+                                <Route path="/teaching-materials" element={<TeachingMaterials />} />
+                                <Route path="/faq" element={<FAQ />} />
+                                <Route path="/contact" element={<Contact />} />
+                                <Route path="/admin/login" element={<AdminLogin />} />
+                                <Route
+                                    path="/admin/dashboard"
+                                    element={
+                                        <ProtectedRoute>
+                                            <AdminDashboard />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                            </Routes>
+                        </main>
+                        <Footer />
+                    </div>
+                </Router>
+            </DarkModeProvider>
+        </AdminProvider>
+    );
 }
 
 export default App;

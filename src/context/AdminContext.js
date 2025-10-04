@@ -10,7 +10,6 @@ export const useAdmin = () => {
     return context;
 };
 
-// Default content structure
 const defaultContent = {
     home: {
         hero: {
@@ -32,7 +31,23 @@ const defaultContent = {
         pageTitle: 'Course Types',
         subtitle: 'Comprehensive English instruction tailored to your goals, interests, and schedule',
         formatNote: '*Any of these course styles can be studied as an individual or a group',
-    }
+    },
+    teachingMaterials: [
+        {
+            id: 1,
+            title: 'The Golden Rules of English',
+            link: 'https://docs.google.com/document/d/1EIPl3hduP6Xx9-yutB_xO3127i0E-uy0Mh4JhPklbxU/edit?usp=sharing',
+            description: 'My students often complain about English being very irregular and not having any stable rules to follow, so I like to remind them periodically of these tried-and-tested rules that I grouped together from different sources and observations.',
+            category: 'Grammar Rules'
+        },
+        {
+            id: 2,
+            title: 'Pronunciation of the Alphabet in English',
+            link: 'https://docs.google.com/document/d/1sjjIRCuvJj_tFEN6E5a4QauoedmMXziraTNU6lUQunw/edit?usp=sharing',
+            description: 'The English alphabet can be very tricky for a lot of students, especially distinguishing between \'e\' and \'i\'. This guide helps clarify the pronunciation of each letter.',
+            category: 'Pronunciation'
+        }
+    ]
 };
 
 export const AdminProvider = ({ children }) => {
@@ -50,7 +65,6 @@ export const AdminProvider = ({ children }) => {
     }, [content]);
 
     const login = (password) => {
-        // Simple password check - in production, use proper authentication
         if (password === 'Rose2025Admin!') {
             setIsAuthenticated(true);
             localStorage.setItem('adminAuthenticated', 'true');
@@ -79,13 +93,49 @@ export const AdminProvider = ({ children }) => {
         });
     };
 
+    const addTeachingMaterial = (material) => {
+        setContent(prevContent => ({
+            ...prevContent,
+            teachingMaterials: [
+                ...(Array.isArray(prevContent.teachingMaterials) ? prevContent.teachingMaterials : []),
+                { ...material, id: Date.now() }
+            ]
+        }));
+    };
+
+
+    const updateTeachingMaterial = (id, updatedMaterial) => {
+        setContent(prevContent => ({
+            ...prevContent,
+            teachingMaterials: Array.isArray(prevContent.teachingMaterials)
+                ? prevContent.teachingMaterials.map(material =>
+                    material.id === id ? { ...material, ...updatedMaterial } : material
+                )
+                : []
+        }));
+    };
+
+    const deleteTeachingMaterial = (id) => {
+        setContent(prevContent => ({
+            ...prevContent,
+            teachingMaterials: Array.isArray(prevContent.teachingMaterials)
+                ? prevContent.teachingMaterials.filter(material => material.id !== id)
+                : []
+        }));
+    };
+
     const value = {
         isAuthenticated,
         login,
         logout,
         content,
-        updateContent
+        updateContent,
+        addTeachingMaterial,
+        updateTeachingMaterial,
+        deleteTeachingMaterial
     };
+
+
 
     return (
         <AdminContext.Provider value={value}>

@@ -20,7 +20,7 @@ const FAQ = () => {
                 },
                 {
                     question: 'What do I need for online lessons?',
-                    answer: 'Just a computer or tablet with internet connection, camera, and microphone. I use Google Meets (upgrading to a premium platform soon) for video calls. I\'ll handle all the technical setup!'
+                    answer: 'Just a computer or tablet with a strong internet connection, camera, and microphone. I use BigBlueButton as my virtual classroom. I\'ll handle all the technical setup!'
                 },
                 {
                     question: 'Do you teach complete beginners?',
@@ -79,11 +79,11 @@ const FAQ = () => {
             questions: [
                 {
                     question: 'How flexible is the scheduling?',
-                    answer: 'Very flexible! One-to-one lessons work around your schedule, while group classes have set times. I offer 1, 3, or 9-month course durations to match your availability and goals.'
+                    answer: 'Very flexible! One-to-one lessons work around your schedule, while group classes have set times, established between teacher and students before each course start. I offer 1, 3, or 9-month course durations to match your availability and goals.'
                 },
                 {
                     question: 'What are your available hours?',
-                    answer: 'I\'m available Monday-Friday, 9am-6pm UK time. I\'m happy to work with international students - we\'ll find times that work for your time zone!'
+                    answer: 'I\'m available from Monday-Friday, 07:00-12:00 and 14:00-20:00 UK time'
                 },
                 {
                     question: 'Can I cancel or reschedule lessons?',
@@ -108,11 +108,11 @@ const FAQ = () => {
                 },
                 {
                     question: 'How do you maximize speaking practice?',
-                    answer: 'I focus on Student Talk Time (STT) - getting you to actively use English rather than just listening. Even grammar lessons include plenty of speaking practice to consolidate learning.'
+                    answer: 'I focus on Student Talk Time (STT) - getting you to actively use English in every class. Even grammar lessons include plenty of speaking practice to consolidate learning.'
                 },
                 {
                     question: 'Which exams can you help me prepare for?',
-                    answer: 'I have extensive experience with Cambridge exams (A2 Key to C2 Proficiency), IELTS, TOEFL, and Oxford Test of English (OTE). I\'ll create a tailored preparation plan for your target exam.'
+                    answer: 'I have extensive experience with Cambridge exams (A2 KET to C2 Proficiency), IELTS, TOEFL, and Oxford Test of English (OTE). I\'ll create a tailored preparation plan for your target exam.'
                 }
             ]
         }
@@ -120,7 +120,6 @@ const FAQ = () => {
 
     return (
         <div className="faq">
-            {/* Hero Section */}
             <section className="faq-hero">
                 <div className="container">
                     <motion.div
@@ -142,7 +141,6 @@ const FAQ = () => {
                 </div>
             </section>
 
-            {/* FAQ Content */}
             <section className="faq-content section">
                 <div className="container">
                     {faqData.map((category, categoryIndex) => (
@@ -192,7 +190,6 @@ const FAQ = () => {
                 </div>
             </section>
 
-            {/* Quick Help */}
             <section className="quick-help section bg-light">
                 <div className="container">
                     <motion.div
@@ -205,7 +202,7 @@ const FAQ = () => {
                         <h2>Still Have Questions?</h2>
                         <p>
                             I'm here to help! Get personalized answers to your specific questions
-                            during our free consultation, or send me a message anytime.
+                            during our free consultation, or send me a message any time.
                         </p>
                         <div className="help-options">
                             <div className="help-option">
@@ -225,7 +222,6 @@ const FAQ = () => {
                 </div>
             </section>
 
-            {/* Contact CTA */}
             <section className="faq-cta section">
                 <div className="container">
                     <motion.div
@@ -244,8 +240,8 @@ const FAQ = () => {
                             <Link to="/contact" className="btn btn-primary">
                                 Start Today
                             </Link>
-                            <Link to="/services" className="btn btn-secondary">
-                                Explore Services
+                            <Link to="/my-classes" className="btn btn-secondary">
+                                Explore My Classes
                             </Link>
                         </div>
                     </motion.div>

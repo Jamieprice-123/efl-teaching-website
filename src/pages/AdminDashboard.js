@@ -5,11 +5,20 @@ import { motion } from 'framer-motion';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
-    const { logout, content, updateContent } = useAdmin();
+    const { logout, content, updateContent, addTeachingMaterial, updateTeachingMaterial, deleteTeachingMaterial } = useAdmin();
     const navigate = useNavigate();
     const [activeSection, setActiveSection] = useState('home');
     const [editedContent, setEditedContent] = useState(content);
     const [saveMessage, setSaveMessage] = useState('');
+
+    // New state for teaching materials form
+    const [newMaterial, setNewMaterial] = useState({
+        title: '',
+        link: '',
+        description: '',
+        category: ''
+    });
+    const [editingMaterialId, setEditingMaterialId] = useState(null);
 
     const handleLogout = () => {
         logout();
@@ -18,6 +27,7 @@ const AdminDashboard = () => {
 
     const handleSave = () => {
         Object.keys(editedContent).forEach(section => {
+            if (section === 'teachingMaterials') return; // Skip teaching materials
             Object.keys(editedContent[section]).forEach(field => {
                 if (typeof editedContent[section][field] === 'object') {
                     Object.keys(editedContent[section][field]).forEach(subField => {
@@ -53,7 +63,146 @@ const AdminDashboard = () => {
         });
     };
 
+    // Teaching Materials handlers
+    const handleAddMaterial = () => {
+        if (newMaterial.title && newMaterial.link && newMaterial.description && newMaterial.category) {
+            addTeachingMaterial(newMaterial);
+            setNewMaterial({ title: '', link: '', description: '', category: '' });
+            setSaveMessage('Material added successfully!');
+            setTimeout(() => setSaveMessage(''), 3000);
+        } else {
+            alert('Please fill in all fields');
+        }
+    };
+
+    const handleEditMaterial = (material) => {
+        setEditingMaterialId(material.id);
+        setNewMaterial({
+            title: material.title,
+            link: material.link,
+            description: material.description,
+            category: material.category
+        });
+    };
+
+    const handleUpdateMaterial = () => {
+        if (newMaterial.title && newMaterial.link && newMaterial.description && newMaterial.category) {
+            updateTeachingMaterial(editingMaterialId, newMaterial);
+            setEditingMaterialId(null);
+            setNewMaterial({ title: '', link: '', description: '', category: '' });
+            setSaveMessage('Material updated successfully!');
+            setTimeout(() => setSaveMessage(''), 3000);
+        }
+    };
+
+    const handleCancelEdit = () => {
+        setEditingMaterialId(null);
+        setNewMaterial({ title: '', link: '', description: '', category: '' });
+    };
+
+    const handleDeleteMaterial = (id) => {
+        if (window.confirm('Are you sure you want to delete this material?')) {
+            deleteTeachingMaterial(id);
+            setSaveMessage('Material deleted successfully!');
+            setTimeout(() => setSaveMessage(''), 3000);
+        }
+    };
+
     const renderEditor = () => {
+        if (activeSection === 'teachingMaterials') {
+            return (
+                <div className="teaching-materials-editor">
+                    <div className="materials-form-section">
+                        <h3>{editingMaterialId ? 'Edit Material' : 'Add New Material'}</h3>
+                        <div className="content-group">
+                            <div className="form-group">
+                                <label>Title *</label>
+                                <input
+                                    type="text"
+                                    value={newMaterial.title}
+                                    onChange={(e) => setNewMaterial({...newMaterial, title: e.target.value})}
+                                    className="form-input"
+                                    placeholder="e.g., The Golden Rules of English"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>URL/Link *</label>
+                                <input
+                                    type="url"
+                                    value={newMaterial.link}
+                                    onChange={(e) => setNewMaterial({...newMaterial, link: e.target.value})}
+                                    className="form-input"
+                                    placeholder="https://..."
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Category *</label>
+                                <input
+                                    type="text"
+                                    value={newMaterial.category}
+                                    onChange={(e) => setNewMaterial({...newMaterial, category: e.target.value})}
+                                    className="form-input"
+                                    placeholder="e.g., Grammar Rules, Pronunciation, Vocabulary"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Description *</label>
+                                <textarea
+                                    value={newMaterial.description}
+                                    onChange={(e) => setNewMaterial({...newMaterial, description: e.target.value})}
+                                    className="form-textarea"
+                                    rows="4"
+                                    placeholder="Brief description of the material..."
+                                />
+                            </div>
+                            <div className="material-form-actions">
+                                {editingMaterialId ? (
+                                    <>
+                                        <button onClick={handleUpdateMaterial} className="btn btn-primary">
+                                            Update Material
+                                        </button>
+                                        <button onClick={handleCancelEdit} className="btn btn-secondary">
+                                            Cancel
+                                        </button>
+                                    </>
+                                ) : (
+                                    <button onClick={handleAddMaterial} className="btn btn-primary">
+                                        Add Material
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="materials-list-section">
+                        <h3>Current Materials ({content.teachingMaterials?.length || 0})</h3>
+                        <div className="materials-list">
+                            {content.teachingMaterials?.map((material) => (
+                                <div key={material.id} className="material-item-admin">
+                                    <div className="material-item-header">
+                                        <h4>{material.title}</h4>
+                                        <span className="material-category-badge">{material.category}</span>
+                                    </div>
+                                    <p className="material-description">{material.description}</p>
+                                    <a href={material.link} target="_blank" rel="noopener noreferrer" className="material-link">
+                                        {material.link}
+                                    </a>
+                                    <div className="material-item-actions">
+                                        <button onClick={() => handleEditMaterial(material)} className="btn-edit">
+                                            Edit
+                                        </button>
+                                        <button onClick={() => handleDeleteMaterial(material.id)} className="btn-delete">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         const sectionContent = editedContent[activeSection];
         if (!sectionContent) return null;
 
@@ -131,7 +280,15 @@ const AdminDashboard = () => {
                                         className={activeSection === 'services' ? 'active' : ''}
                                         onClick={() => setActiveSection('services')}
                                     >
-                                        Services Page
+                                        My Classes Page
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        className={activeSection === 'teachingMaterials' ? 'active' : ''}
+                                        onClick={() => setActiveSection('teachingMaterials')}
+                                    >
+                                        Teaching Materials
                                     </button>
                                 </li>
                             </ul>
@@ -153,11 +310,13 @@ const AdminDashboard = () => {
                                     {renderEditor()}
                                 </div>
 
-                                <div className="editor-actions">
-                                    <button onClick={handleSave} className="btn btn-primary">
-                                        Save Changes
-                                    </button>
-                                </div>
+                                {activeSection !== 'teachingMaterials' && (
+                                    <div className="editor-actions">
+                                        <button onClick={handleSave} className="btn btn-primary">
+                                            Save Changes
+                                        </button>
+                                    </div>
+                                )}
                             </motion.div>
                         </main>
                     </div>

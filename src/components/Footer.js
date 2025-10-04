@@ -1,3 +1,4 @@
+// Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
@@ -40,10 +41,10 @@ const Footer = () => {
               <ul className="footer-links">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About Rose</Link></li>
-                <li><Link to="/services">Services</Link></li>
+                <li><Link to="/my-classes">My Classes</Link></li>
                 <li><Link to="/pricing">Pricing</Link></li>
                 <li><Link to="/testimonials">Testimonials</Link></li>
-                <li><Link to="/blog">Blog</Link></li>
+                <li><Link to="/teaching-materials">Teaching Materials</Link></li>
                 <li><Link to="/faq">FAQ</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
@@ -51,14 +52,14 @@ const Footer = () => {
 
             {/* Services */}
             <div className="footer-section">
-              <h4>Services</h4>
+              <h4>My Classes</h4>
               <ul className="footer-links">
-                <li><Link to="/services">One-on-One Lessons</Link></li>
-                <li><Link to="/services">Group Classes</Link></li>
-                <li><Link to="/services">Project Courses</Link></li>
-                <li><Link to="/services">Exam Preparation</Link></li>
-                <li><Link to="/services">General English</Link></li>
-                <li><Link to="/services">Conversation Classes</Link></li>
+                <li><Link to="/my-classes">One-on-One Lessons</Link></li>
+                <li><Link to="/my-classes">Group Classes</Link></li>
+                <li><Link to="/my-classes">Project Courses</Link></li>
+                <li><Link to="/my-classes">Exam Preparation</Link></li>
+                <li><Link to="/my-classes">General English</Link></li>
+                <li><Link to="/my-classes">Conversation Classes</Link></li>
               </ul>
             </div>
 
@@ -90,20 +91,12 @@ const Footer = () => {
                 <h5>Follow Me</h5>
                 <div className="social-icons">
                   <a
-                      href="https://instagram.com/iamenglishteacherrose"
+                      href="https://instagram.com/englishteacherrose"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="social-link"
                   >
                     📷 Instagram
-                  </a>
-                  <a
-                      href="https://www.tiktok.com/@iamenglishteacherrose"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="social-link"
-                  >
-                    🎵 TikTok
                   </a>
                 </div>
               </div>
@@ -115,6 +108,7 @@ const Footer = () => {
             <div className="footer-bottom-content">
               <div className="copyright">
                 <p>&copy; {currentYear} English Teacher Rose. All rights reserved.</p>
+                <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', opacity: 0.8 }}>Built by JDPCrafted</p>
               </div>
               <div className="footer-cta">
                 <Link to="/contact" className="btn btn-primary btn-small">

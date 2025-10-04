@@ -135,14 +135,14 @@
 }
 
 .format-note {
-    text-align: center;
-    margin-top: 2rem;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .format-note p {
-    color: var(--text-light);
-    font-style: italic;
-    font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 0.95rem;
 }
 
 .service-card {
@@ -258,56 +258,14 @@
   font-weight: 500;
 }
 
-.testimonials-preview {
-  padding: 80px 0;
+.testimonials-ctas {
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+  height: 100%;            /* or set a specific height if needed */
+  margin-top: 2rem;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.testimonials-cta {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.testimonials-cta .btn-secondary {
-  background: white;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  padding: 15px 40px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-  min-width: 220px;
-  display: inline-block;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(129, 212, 227, 0.2);
-}
-
-.testimonials-cta .btn-secondary:hover {
-  background: var(--primary-color);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(129, 212, 227, 0.4);
-}
-
-.dark-mode .testimonials-cta .btn-secondary {
-  background: var(--card-bg);
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-  box-shadow: 0 4px 15px rgba(91, 192, 222, 0.3);
-}
-
-.dark-mode .testimonials-cta .btn-secondary:hover {
-  background: var(--primary-color);
-  color: white;
-  box-shadow: 0 8px 25px rgba(91, 192, 222, 0.5);
-}
 
 .final-cta {
   background: linear-gradient(135deg, var(--text-dark), #34495E);
@@ -415,17 +373,7 @@
     font-size: 2rem;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
 
-  .testimonials-cta .btn-secondary {
-    width: 100%;
-    max-width: 300px;
-    padding: 12px 30px;
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -464,11 +412,42 @@
     align-items: center;
   }
 
-  .testimonials-cta .btn-secondary {
-    width: 100%;
-    max-width: 250px;
-    padding: 12px 20px;
-    font-size: 0.95rem;
-    min-width: auto;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 60px;
   }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .image-placeholder {
+    width: 250px;
+    height: 250px;
+    font-size: 1rem;
+  }
+
+  .service-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .approach-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
 }

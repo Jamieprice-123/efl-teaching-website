@@ -18,17 +18,41 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    const subject = encodeURIComponent('New Student Inquiry - English Teacher Rose');
+    const body = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+Current English Level: ${formData.englishLevel || 'Not specified'}
+Course Interest: ${formData.serviceInterest || 'Not specified'}
+${formData.examType ? `Exam Type: ${formData.examType}` : ''}
+${formData.projectType ? `Project Type: ${formData.projectType}` : ''}
+
+Learning Goals:
+${formData.goals || 'Not specified'}
+
+Availability:
+${formData.availability || 'Not specified'}
+
+Additional Message:
+${formData.message || 'None'}
+    `);
+
+    // open user's email client
+    window.location.href = `mailto:iamenglishteacherrose@gmail.com?subject=${subject}&body=${body}`;
+
     setIsSubmitted(true);
 
+    // reset form after a short delay so user sees the success block
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -115,10 +139,12 @@ const Contact = () => {
               <p className="contact-subtitle">
                 Ready to transform your English skills? Let's discuss your goals and create a personalized learning plan.
               </p>
+
               <div className="hero-highlight">
                 <span className="highlight-icon">🎯</span>
                 <span>Free 20-minute consultation • No commitment required</span>
               </div>
+
               <div className="hero-level-test">
                 <p>Not sure of your English level?</p>
                 <a
@@ -134,10 +160,11 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* CONTACT FORM */}
+        {/* MAIN: FORM + INFO */}
         <section className="contact-main section">
           <div className="container">
             <div className="contact-content">
+              {/* FORM SECTION */}
               <motion.div
                   className="contact-form-section"
                   initial={{ opacity: 0, x: -50 }}
@@ -148,6 +175,7 @@ const Contact = () => {
                 <div className="form-header">
                   <h2>Book Your Free Consultation</h2>
                   <p>Tell me about your English learning goals and I'll get back to you within 24 hours.</p>
+
                   <div className="level-test-suggestion">
                     <div className="level-test-card">
                       <div className="test-icon">📝</div>
@@ -167,18 +195,22 @@ const Contact = () => {
                   </div>
                 </div>
 
+                {/* Success message */}
                 {isSubmitted ? (
                     <div className="form-success">
                       <div className="success-icon">✅</div>
                       <h3>Thank You!</h3>
-                      <p>Your message has been sent successfully. I'll get back to you within 24 hours to schedule your free consultation.</p>
+                      <p>
+                        Your email client should open with your message. Please send it to complete your inquiry.
+                        I'll get back to you within 24 hours to schedule your free consultation.
+                      </p>
                       <p style={{ marginTop: '1rem', fontSize: '0.95rem', color: 'var(--text-light)' }}>
                         Next step: You'll receive a link to the Needs Assessment questionnaire via email.
                       </p>
                     </div>
                 ) : (
                     <form className="contact-form" onSubmit={handleSubmit}>
-                      {/* NAME & EMAIL */}
+                      {/* Row 1 */}
                       <div className="form-row">
                         <div className="form-group">
                           <label htmlFor="name" className="form-label">Full Name *</label>
@@ -193,6 +225,7 @@ const Contact = () => {
                               placeholder="Your full name"
                           />
                         </div>
+
                         <div className="form-group">
                           <label htmlFor="email" className="form-label">Email Address *</label>
                           <input
@@ -208,7 +241,7 @@ const Contact = () => {
                         </div>
                       </div>
 
-                      {/* ENGLISH LEVEL & INTEREST */}
+                      {/* Row 2 */}
                       <div className="form-row">
                         <div className="form-group">
                           <label htmlFor="englishLevel" className="form-label">Current English Level</label>
@@ -229,6 +262,7 @@ const Contact = () => {
                             <option value="unsure">Not sure - I took the level test</option>
                           </select>
                         </div>
+
                         <div className="form-group">
                           <label htmlFor="serviceInterest" className="form-label">Course Interest</label>
                           <select
@@ -251,7 +285,7 @@ const Contact = () => {
                         </div>
                       </div>
 
-                      {/* CONDITIONAL FIELDS */}
+                      {/* Conditional: exam type */}
                       {formData.serviceInterest === 'exam-prep' && (
                           <div className="form-group">
                             <label htmlFor="examType" className="form-label">Exam Type</label>
@@ -271,6 +305,7 @@ const Contact = () => {
                           </div>
                       )}
 
+                      {/* Conditional: project type */}
                       {formData.serviceInterest === 'project' && (
                           <div className="form-group">
                             <label htmlFor="projectType" className="form-label">Project Course Type</label>
@@ -290,7 +325,7 @@ const Contact = () => {
                           </div>
                       )}
 
-                      {/* GOALS */}
+                      {/* Goals */}
                       <div className="form-group">
                         <label htmlFor="goals" className="form-label">Learning Goals</label>
                         <textarea
@@ -304,7 +339,7 @@ const Contact = () => {
                         />
                       </div>
 
-                      {/* AVAILABILITY */}
+                      {/* Availability */}
                       <div className="form-group">
                         <label htmlFor="availability" className="form-label">Availability</label>
                         <textarea
@@ -318,7 +353,7 @@ const Contact = () => {
                         />
                       </div>
 
-                      {/* MESSAGE */}
+                      {/* Additional message */}
                       <div className="form-group">
                         <label htmlFor="message" className="form-label">Additional Message</label>
                         <textarea
@@ -339,7 +374,7 @@ const Contact = () => {
                 )}
               </motion.div>
 
-              {/* CONTACT INFO */}
+              {/* CONTACT INFO SECTION */}
               <motion.div
                   className="contact-info-section"
                   initial={{ opacity: 0, x: 50 }}
@@ -363,9 +398,7 @@ const Contact = () => {
                           ) : (
                               <span className="info-text">{info.content}</span>
                           )}
-                          {info.subtitle && (
-                              <span className="info-subtitle">{info.subtitle}</span>
-                          )}
+                          {info.subtitle && <span className="info-subtitle">{info.subtitle}</span>}
                         </div>
                       </div>
                   ))}
@@ -393,6 +426,7 @@ const Contact = () => {
               <h2>How It Works</h2>
               <p>Your journey to better English starts with a simple process</p>
             </motion.div>
+
             <div className="steps-grid">
               {processSteps.map((step, index) => (
                   <motion.div
@@ -412,8 +446,8 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* TIMETABLE */}
-        <section className="timetable-section section">
+        {/* TIMETABLE SECTION */}
+        <section className="timetable-section section bg-light">
           <div className="container">
             <motion.div
                 className="section-title"
@@ -422,26 +456,50 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-              <h2>My Teaching Timetable</h2>
-              <p>View my current availability and course schedule</p>
+              <h2>📅 My Teaching Timetable</h2>
+              <p>View my current availability and see when classes are scheduled</p>
             </motion.div>
+
             <motion.div
-                className="timetable-embed"
+                className="timetable-cta"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
+                style={{ textAlign: 'center', marginTop: '2rem' }}
             >
-              <iframe
-                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQIyjzPuDH074zYyl2TqdY87GOx6fp2pZcUP2KT02Ms5PbuT9yyjuy-WWzzMz5Ns2vkhO812RYUVRSh/pubhtml?gid=1477582036&single=true&widget=true&headers=false"
-                  title="Rose's Teaching Timetable"
-                  className="timetable-iframe"
-              ></iframe>
+              <a
+                  href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQIyjzPuDH074zYyl2TqdY87GOx6fp2pZcUP2KT02Ms5PbuT9yyjuy-WWzzMz5Ns2vkhO812RYUVRSh/pubhtml?gid=1477582036&single=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  style={{
+                    fontSize: '1.1rem',
+                    padding: '15px 40px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+              >
+                View My Full Timetable
+                <span style={{ fontSize: '1.2rem' }}>↗</span>
+              </a>
+
+              <p
+                  style={{
+                    marginTop: '1rem',
+                    color: 'var(--text-light)',
+                    fontSize: '0.95rem'
+                  }}
+              >
+                Opens in a new tab • Updated weekly
+              </p>
             </motion.div>
           </div>
         </section>
 
-        {/* NEEDS ASSESSMENT */}
+
+        {/* NEEDS ASSESSMENT INFO */}
         <section className="needs-assessment-info section bg-light">
           <div className="container">
             <motion.div
@@ -452,6 +510,7 @@ const Contact = () => {
                 transition={{ duration: 0.8 }}
             >
               <h2>📋 What Happens After You Contact Me?</h2>
+
               <div className="assessment-steps">
                 <div className="assessment-step">
                   <div className="step-icon">1️⃣</div>
@@ -460,11 +519,13 @@ const Contact = () => {
                     <p>You'll receive a confirmation email with next steps and a link to the Needs Assessment.</p>
                   </div>
                 </div>
+
                 <div className="assessment-step">
                   <div className="step-icon">2️⃣</div>
                   <div className="step-content">
                     <h3>Complete the Needs Assessment</h3>
                     <p>A short questionnaire to help me understand your learning needs better before our consultation.</p>
+
                     <a
                         href="https://forms.gle/8avcCJmQgY9n7P2V9"
                         target="_blank"
@@ -476,6 +537,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
+
                 <div className="assessment-step">
                   <div className="step-icon">3️⃣</div>
                   <div className="step-content">
@@ -501,19 +563,23 @@ const Contact = () => {
               <h2>Frequently Asked Questions</h2>
               <p>Find answers to common questions about my teaching process</p>
             </motion.div>
+
             <div className="faq-grid">
               <div className="faq-item">
                 <h4>Do I need to take the level test before contacting you?</h4>
                 <p>It's highly recommended! The level test helps me understand your current grammar and vocabulary level before our consultation, but it's not mandatory.</p>
               </div>
+
               <div className="faq-item">
                 <h4>What happens during the free consultation?</h4>
                 <p>We'll have a 20-minute video call where I'll assess your spoken English, discuss your goals, and recommend the best course options for you.</p>
               </div>
+
               <div className="faq-item">
                 <h4>Is there any commitment after the consultation?</h4>
-                <p>No, the consultation is completely free with no obligation. You can decide afterward if you'd like to continue with lessons.</p>
+                <p>No, the consultation is completely free with no obligation. You can decide afterward if you'd like to book lessons.</p>
               </div>
+
               <div className="faq-item">
                 <h4>How do I pay for lessons if I decide to continue?</h4>
                 <p>Payment information will be provided after the consultation. I offer flexible payment options to suit your needs.</p>

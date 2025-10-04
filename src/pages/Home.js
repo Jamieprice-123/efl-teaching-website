@@ -1,3 +1,4 @@
+// Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -13,25 +14,25 @@ const Home = () => {
             icon: '📖',
             title: 'Textbook Courses',
             description: 'Structured learning with professional Oxford textbook series - New English File or Headway.',
-            link: '/services'
+            link: '/my-classes'
         },
         {
             icon: '📚',
             title: 'Project Courses',
             description: 'Unique courses studying books, podcasts, or series to practice English in context.',
-            link: '/services'
+            link: '/my-classes'
         },
         {
             icon: '🎯',
             title: 'Exam Preparation',
             description: 'Comprehensive preparation for Cambridge, IELTS, TOEFL, and Oxford Test of English.',
-            link: '/services'
+            link: '/my-classes'
         },
         {
             icon: '💬',
             title: 'Conversation Classes',
             description: 'Focus on speaking fluency and confidence in everyday conversations.',
-            link: '/services'
+            link: '/my-classes'
         }
     ];
 
@@ -222,7 +223,8 @@ const Home = () => {
             <section className="testimonials-preview">
                 <div className="container">
                     <div className="section-title">
-                        <h2>What My Students Say</h2>
+                        <h2></h2><h2>
+                            What My Students Say</h2>
                         <p>Discover how my holistic teaching approach has helped students from around the world achieve their English goals.</p>
                     </div>
                     <div className="testimonials-grid">
@@ -238,7 +240,7 @@ const Home = () => {
                             </motion.div>
                         ))}
                     </div>
-                    <div className="testimonials-cta">
+                    <div className="testimonials-ctas">
                         <Link to="/testimonials" className="btn btn-secondary">Read More Reviews</Link>
                     </div>
                 </div>

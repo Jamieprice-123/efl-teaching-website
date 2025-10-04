@@ -1,3 +1,4 @@
+// Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
@@ -58,15 +59,15 @@ const Navbar = () => {
                 onMouseLeave={() => setShowClassesDropdown(false)}
             >
               <Link
-                  to="/services"
-                  className={`navbar-link ${isActive('/services') || isActive('/pricing') ? 'active' : ''}`}
+                  to="/my-classes"
+                  className={`navbar-link ${isActive('/my-classes') || isActive('/pricing') ? 'active' : ''}`}
                   onClick={closeMenu}
               >
                 My Classes
                 <span className="dropdown-arrow">▼</span>
               </Link>
               <div className={`dropdown-menu ${showClassesDropdown ? 'show' : ''}`}>
-                <Link to="/services" className="dropdown-item" onClick={closeMenu}>
+                <Link to="/my-classes" className="dropdown-item" onClick={closeMenu}>
                   Course Types
                 </Link>
                 <Link to="/pricing" className="dropdown-item" onClick={closeMenu}>
