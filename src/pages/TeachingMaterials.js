@@ -6,10 +6,34 @@ import './TeachingMaterials.css';
 
 const TeachingMaterials = () => {
     const { content } = useAdmin();
-    const featuredMaterials = content.teachingMaterials || [];
+    const dynamicMaterials = content.teachingMaterials || [];
+
+    // ✅ Hard-coded featured materials (always displayed)
+    const staticFeatured = [
+        {
+            id: 'golden-rules',
+            title: 'The Golden Rules of English',
+            description:
+                "My students often complain about English being irregular and unpredictable. These 'Golden Rules' remind us that English actually has many stable, reliable patterns — compiled from years of teaching and observation.",
+            category: 'Grammar & Usage',
+            link: 'https://docs.google.com/document/d/1EIPl3hduP6Xx9-yutB_xO3127i0E-uy0Mh4JhPklbxU/edit?usp=sharing',
+        },
+        {
+            id: 'alphabet-pronunciation',
+            title: 'Pronunciation of the English Alphabet',
+            description:
+                "A tricky but essential guide to pronouncing English letters correctly — especially the often-confused ‘E’ and ‘I’. Includes practice tips and examples for clearer pronunciation.",
+            category: 'Pronunciation',
+            link: 'https://docs.google.com/document/d/1sjjIRCuvJj_tFEN6E5a4QauoedmMXziraTNU6lUQunw/edit?usp=sharing',
+        },
+    ];
+
+    // ✅ Merge hardcoded + dynamic materials
+    const featuredMaterials = [...staticFeatured, ...dynamicMaterials];
 
     return (
         <div className="teaching-materials">
+            {/* Hero Section */}
             <section className="materials-hero">
                 <div className="container">
                     <motion.div
@@ -31,6 +55,7 @@ const TeachingMaterials = () => {
                 </div>
             </section>
 
+            {/* Featured Materials Section */}
             <section className="featured-materials section">
                 <div className="container">
                     <motion.div
@@ -43,11 +68,12 @@ const TeachingMaterials = () => {
                         <h2>Featured Resources</h2>
                         <p>Don't miss these popular materials from my teaching experience</p>
                     </motion.div>
+
                     {featuredMaterials.length > 0 ? (
                         <div className="featured-grid">
                             {featuredMaterials.map((material, index) => (
                                 <motion.article
-                                    key={material.id}
+                                    key={material.id || index}
                                     className="featured-material-card"
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -72,16 +98,16 @@ const TeachingMaterials = () => {
                                     </div>
                                 </motion.article>
                             ))}
-
                         </div>
-                        ) : (
+                    ) : (
                         <div className="no-materials">
-                        <p>No teaching materials available yet. Check back soon!</p>
+                            <p>No teaching materials available yet. Check back soon!</p>
                         </div>
-                        )}
+                    )}
                 </div>
             </section>
 
+            {/* CTA Section */}
             <section className="materials-cta section">
                 <div className="container">
                     <motion.div
@@ -109,6 +135,7 @@ const TeachingMaterials = () => {
                 </div>
             </section>
 
+            {/* Coming Soon Section */}
             <section className="coming-soon section bg-light">
                 <div className="container">
                     <motion.div
