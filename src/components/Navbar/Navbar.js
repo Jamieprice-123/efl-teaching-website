@@ -69,7 +69,7 @@ const Navbar = () => {
                   onClick={closeMenu}
               >
                 My Classes
-                <span className="dropdown-arrow">▼</span>
+                <span className="dropdown-arrow">â–¼</span>
               </Link>
               <div className={`dropdown-menu ${showClassesDropdown ? 'show' : ''}`}>
                 <Link to="/my-classes" className="dropdown-item" onClick={closeMenu}>
@@ -109,6 +109,15 @@ const Navbar = () => {
             >
               FAQ
             </Link>
+            <a
+                href="https://app.learncube.com/app/classes/english-teacher-rose-980206/"
+                className="navbar-link student-portal-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+            >
+              Student Portal
+            </a>
             <DarkModeToggle />
             <Link
                 to="/contact"
