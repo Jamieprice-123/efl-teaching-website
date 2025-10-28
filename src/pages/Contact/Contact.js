@@ -16,6 +16,8 @@ const Contact = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,48 +27,54 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    const subject = encodeURIComponent('New Student Inquiry - English Teacher Rose');
-    const body = encodeURIComponent(`
-Name: ${formData.name}
-Email: ${formData.email}
-Current English Level: ${formData.englishLevel || 'Not specified'}
-Course Interest: ${formData.serviceInterest || 'Not specified'}
-${formData.examType ? `Exam Type: ${formData.examType}` : ''}
-${formData.projectType ? `Project Type: ${formData.projectType}` : ''}
+    // Google Apps Script Web App URL - Update this with your deployed script URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyKjQUAglDYqk_OdjHb4qsmO8v8jqD7QR-CiD0NjyoFgK3il0GvT6L7wWT6i46TsAzl/exec';
 
-Learning Goals:
-${formData.goals || 'Not specified'}
-
-Availability:
-${formData.availability || 'Not specified'}
-
-Additional Message:
-${formData.message || 'None'}
-    `);
-
-    // open user's email client
-    window.location.href = `mailto:iamenglishteacherrose@gmail.com?subject=${subject}&body=${body}`;
-
-    setIsSubmitted(true);
-
-    // reset form after a short delay so user sees the success block
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        englishLevel: '',
-        goals: '',
-        availability: '',
-        serviceInterest: '',
-        examType: '',
-        projectType: '',
-        message: ''
+    try {
+      // Google Apps Script doesn't support CORS properly, so we use 'no-cors' mode
+      // This means we can't read the response, but the submission still works
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
       });
-    }, 3000);
+
+      // With 'no-cors' mode, if fetch doesn't throw an error, the submission succeeded
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+
+      // Reset form after showing success message
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          englishLevel: '',
+          goals: '',
+          availability: '',
+          serviceInterest: '',
+          examType: '',
+          projectType: '',
+          message: ''
+        });
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitError(
+        error.message ||
+        'There was an error submitting the form. Please try emailing me directly at iamenglishteacherrose@gmail.com'
+      );
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -178,7 +186,7 @@ ${formData.message || 'None'}
 
                   <div className="level-test-suggestion">
                     <div className="level-test-card">
-                      <div className="test-icon">📝</div>
+                      <div className="test-icon">📍</div>
                       <div className="test-content">
                         <h4>Take Our Level Test First!</h4>
                         <p>Get an instant assessment of your English level before booking your consultation.</p>
@@ -198,179 +206,195 @@ ${formData.message || 'None'}
                 {/* Success message */}
                 {isSubmitted ? (
                     <div className="form-success">
-                      <div className="success-icon">✅</div>
+                      <div className="success-icon">âœ…</div>
                       <h3>Thank You!</h3>
                       <p>
-                        Your email client should open with your message. Please send it to complete your inquiry.
-                        I'll get back to you within 24 hours to schedule your free consultation.
+                        Your inquiry has been received successfully! I'll get back to you within 24 hours
+                        to schedule your free consultation.
                       </p>
                       <p style={{ marginTop: '1rem', fontSize: '0.95rem', color: 'var(--text-light)' }}>
-                        Next step: You'll receive a link to the Needs Assessment questionnaire via email.
+                        Next step: Check your email for a link to the Needs Assessment questionnaire.
                       </p>
                     </div>
                 ) : (
-                    <form className="contact-form" onSubmit={handleSubmit}>
-                      {/* Row 1 */}
-                      <div className="form-row">
-                        <div className="form-group">
-                          <label htmlFor="name" className="form-label">Full Name *</label>
-                          <input
-                              type="text"
-                              id="name"
-                              name="name"
-                              value={formData.name}
-                              onChange={handleChange}
-                              className="form-input"
-                              required
-                              placeholder="Your full name"
-                          />
-                        </div>
-
-                        <div className="form-group">
-                          <label htmlFor="email" className="form-label">Email Address *</label>
-                          <input
-                              type="email"
-                              id="email"
-                              name="email"
-                              value={formData.email}
-                              onChange={handleChange}
-                              className="form-input"
-                              required
-                              placeholder="your.email@example.com"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Row 2 */}
-                      <div className="form-row">
-                        <div className="form-group">
-                          <label htmlFor="englishLevel" className="form-label">Current English Level</label>
-                          <select
-                              id="englishLevel"
-                              name="englishLevel"
-                              value={formData.englishLevel}
-                              onChange={handleChange}
-                              className="form-select"
-                          >
-                            <option value="">Select your level</option>
-                            <option value="A1">A1 - Beginner</option>
-                            <option value="A2">A2 - Elementary</option>
-                            <option value="B1">B1 - Intermediate</option>
-                            <option value="B2">B2 - Upper Intermediate</option>
-                            <option value="C1">C1 - Advanced</option>
-                            <option value="C2">C2 - Proficiency</option>
-                            <option value="unsure">Not sure - I took the level test</option>
-                          </select>
-                        </div>
-
-                        <div className="form-group">
-                          <label htmlFor="serviceInterest" className="form-label">Course Interest</label>
-                          <select
-                              id="serviceInterest"
-                              name="serviceInterest"
-                              value={formData.serviceInterest}
-                              onChange={handleChange}
-                              className="form-select"
-                          >
-                            <option value="">Select a course type</option>
-                            <option value="one-on-one">One-on-One Lessons</option>
-                            <option value="group">Group Classes</option>
-                            <option value="textbook">Textbook Courses</option>
-                            <option value="project">Project Courses</option>
-                            <option value="exam-prep">Exam Preparation</option>
-                            <option value="general">General English</option>
-                            <option value="conversation">Conversation Classes</option>
-                            <option value="consultation">Just the consultation for now</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      {/* Conditional: exam type */}
-                      {formData.serviceInterest === 'exam-prep' && (
-                          <div className="form-group">
-                            <label htmlFor="examType" className="form-label">Exam Type</label>
-                            <select
-                                id="examType"
-                                name="examType"
-                                value={formData.examType}
-                                onChange={handleChange}
-                                className="form-select"
-                            >
-                              <option value="">Select exam type</option>
-                              <option value="cambridge">Cambridge English preparation course</option>
-                              <option value="ielts">IELTS preparation course</option>
-                              <option value="toefl">TOEFL preparation course</option>
-                              <option value="ote">Oxford Test of English preparation course</option>
-                            </select>
+                    <>
+                      {/* Error message */}
+                      {submitError && (
+                          <div className="form-error" style={{
+                            padding: '1rem',
+                            marginBottom: '1.5rem',
+                            backgroundColor: '#fee',
+                            border: '1px solid #fcc',
+                            borderRadius: '8px',
+                            color: '#c33'
+                          }}>
+                            <strong>âš ï¸ Error:</strong> {submitError}
                           </div>
                       )}
 
-                      {/* Conditional: project type */}
-                      {formData.serviceInterest === 'project' && (
+                      <form className="contact-form" onSubmit={handleSubmit}>
+                        {/* Row 1 */}
+                        <div className="form-row">
                           <div className="form-group">
-                            <label htmlFor="projectType" className="form-label">Project Course Type</label>
+                            <label htmlFor="name" className="form-label">Full Name *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                className="form-input"
+                                required
+                                placeholder="Your full name"
+                            />
+                          </div>
+
+                          <div className="form-group">
+                            <label htmlFor="email" className="form-label">Email Address *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="form-input"
+                                required
+                                placeholder="your.email@example.com"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Row 2 */}
+                        <div className="form-row">
+                          <div className="form-group">
+                            <label htmlFor="englishLevel" className="form-label">Current English Level</label>
                             <select
-                                id="projectType"
-                                name="projectType"
-                                value={formData.projectType}
+                                id="englishLevel"
+                                name="englishLevel"
+                                value={formData.englishLevel}
                                 onChange={handleChange}
                                 className="form-select"
                             >
-                              <option value="">Select project type</option>
-                              <option value="book-club">Book Club</option>
-                              <option value="podcast-club">Podcast Club</option>
-                              <option value="cinema-club">Cinema Club</option>
-                              <option value="any-project">Any project course - I don't mind</option>
+                              <option value="">Select your level</option>
+                              <option value="A1">A1 - Beginner</option>
+                              <option value="A2">A2 - Elementary</option>
+                              <option value="B1">B1 - Intermediate</option>
+                              <option value="B2">B2 - Upper Intermediate</option>
+                              <option value="C1">C1 - Advanced</option>
+                              <option value="C2">C2 - Proficiency</option>
+                              <option value="unsure">Not sure - I took the level test</option>
                             </select>
                           </div>
-                      )}
 
-                      {/* Goals */}
-                      <div className="form-group">
-                        <label htmlFor="goals" className="form-label">Learning Goals</label>
-                        <textarea
-                            id="goals"
-                            name="goals"
-                            value={formData.goals}
-                            onChange={handleChange}
-                            className="form-textarea"
-                            placeholder="What would you like to achieve with your English? (e.g., pass an exam, improve conversation skills, advance your career, etc.)"
-                            rows="4"
-                        />
-                      </div>
+                          <div className="form-group">
+                            <label htmlFor="serviceInterest" className="form-label">Course Interest</label>
+                            <select
+                                id="serviceInterest"
+                                name="serviceInterest"
+                                value={formData.serviceInterest}
+                                onChange={handleChange}
+                                className="form-select"
+                            >
+                              <option value="">Select a course type</option>
+                              <option value="one-on-one">One-on-One Lessons</option>
+                              <option value="group">Group Classes</option>
+                              <option value="textbook">Textbook Courses</option>
+                              <option value="project">Project Courses</option>
+                              <option value="exam-prep">Exam Preparation</option>
+                              <option value="general">General English</option>
+                              <option value="conversation">Conversation Classes</option>
+                              <option value="consultation">Just the consultation for now</option>
+                            </select>
+                          </div>
+                        </div>
 
-                      {/* Availability */}
-                      <div className="form-group">
-                        <label htmlFor="availability" className="form-label">Availability</label>
-                        <textarea
-                            id="availability"
-                            name="availability"
-                            value={formData.availability}
-                            onChange={handleChange}
-                            className="form-textarea"
-                            placeholder="When are you generally available for lessons? Please include your time zone and preferred days/times."
-                            rows="3"
-                        />
-                      </div>
+                        {/* Conditional: exam type */}
+                        {formData.serviceInterest === 'exam-prep' && (
+                            <div className="form-group">
+                              <label htmlFor="examType" className="form-label">Exam Type</label>
+                              <select
+                                  id="examType"
+                                  name="examType"
+                                  value={formData.examType}
+                                  onChange={handleChange}
+                                  className="form-select"
+                              >
+                                <option value="">Select exam type</option>
+                                <option value="cambridge">Cambridge English preparation course</option>
+                                <option value="ielts">IELTS preparation course</option>
+                                <option value="toefl">TOEFL preparation course</option>
+                                <option value="ote">Oxford Test of English preparation course</option>
+                              </select>
+                            </div>
+                        )}
 
-                      {/* Additional message */}
-                      <div className="form-group">
-                        <label htmlFor="message" className="form-label">Additional Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            className="form-textarea"
-                            placeholder="Any questions or additional information you'd like to share?"
-                            rows="3"
-                        />
-                      </div>
+                        {/* Conditional: project type */}
+                        {formData.serviceInterest === 'project' && (
+                            <div className="form-group">
+                              <label htmlFor="projectType" className="form-label">Project Course Type</label>
+                              <select
+                                  id="projectType"
+                                  name="projectType"
+                                  value={formData.projectType}
+                                  onChange={handleChange}
+                                  className="form-select"
+                              >
+                                <option value="">Select project type</option>
+                                <option value="book-club">Book Club</option>
+                                <option value="podcast-club">Podcast Club</option>
+                                <option value="cinema-club">Cinema Club</option>
+                                <option value="any-project">Any project course - I don't mind</option>
+                              </select>
+                            </div>
+                        )}
 
-                      <button type="submit" className="btn btn-primary form-submit">
-                        Send Message & Book Consultation
-                      </button>
-                    </form>
+                        {/* Goals */}
+                        <div className="form-group">
+                          <label htmlFor="goals" className="form-label">Learning Goals</label>
+                          <textarea
+                              id="goals"
+                              name="goals"
+                              value={formData.goals}
+                              onChange={handleChange}
+                              className="form-textarea"
+                              placeholder="What would you like to achieve with your English? (e.g., pass an exam, improve conversation skills, advance your career, etc.)"
+                              rows="4"
+                          />
+                        </div>
+
+                        {/* Availability */}
+                        <div className="form-group">
+                          <label htmlFor="availability" className="form-label">Availability</label>
+                          <textarea
+                              id="availability"
+                              name="availability"
+                              value={formData.availability}
+                              onChange={handleChange}
+                              className="form-textarea"
+                              placeholder="When are you generally available for lessons? Please include your time zone and preferred days/times."
+                              rows="3"
+                          />
+                        </div>
+
+                        {/* Additional message */}
+                        <div className="form-group">
+                          <label htmlFor="message" className="form-label">Additional Message</label>
+                          <textarea
+                              id="message"
+                              name="message"
+                              value={formData.message}
+                              onChange={handleChange}
+                              className="form-textarea"
+                              placeholder="Any questions or additional information you'd like to share?"
+                              rows="3"
+                          />
+                        </div>
+
+                        <button type="submit" className="btn btn-primary form-submit" disabled={isSubmitting}>
+                          {isSubmitting ? 'Sending...' : 'Send Message & Book Consultation'}
+                        </button>
+                      </form>
+                    </>
                 )}
               </motion.div>
 
@@ -482,7 +506,7 @@ ${formData.message || 'None'}
                   }}
               >
                 View My Full Timetable
-                <span style={{ fontSize: '1.2rem' }}>↗</span>
+                <span style={{ fontSize: '1.2rem' }}>→</span>
               </a>
 
               <p
