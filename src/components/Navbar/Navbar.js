@@ -69,7 +69,7 @@ const Navbar = () => {
                   onClick={closeMenu}
               >
                 My Classes
-                <span className="dropdown-arrow">â–¼</span>
+                <span className="dropdown-arrow">▼</span>
               </Link>
               <div className={`dropdown-menu ${showClassesDropdown ? 'show' : ''}`}>
                 <Link to="/my-classes" className="dropdown-item" onClick={closeMenu}>
