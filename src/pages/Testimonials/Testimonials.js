@@ -224,7 +224,7 @@ const Testimonials = () => {
                             <Link to="/contact" className="btn btn-primary">
                                 Start Your Journey
                             </Link>
-                            <Link to="/services" className="btn btn-secondary">
+                            <Link to="/my-classes" className="btn btn-secondary">
                                 Explore Course Types
                             </Link>
                         </div>
